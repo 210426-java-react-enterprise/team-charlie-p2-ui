@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Menu from "./components/Menu"
 import { React, useState } from 'react';
+import logo from './resources/logo.svg';
 
 function App() {
 
@@ -21,11 +22,11 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div id="app">
       {menu && <Menu menuOptions={menuOptions} viewChange={viewChange} />}
       <nav id="nav-bar">
-        <button type="button" id="home-button" data-route={homepage} onClick={viewChange}>_HOME</button>
-        <button type="button" id="menu-button" onClick={toggleMenu}>_MENU</button>
+      <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className="fas fa-bars"></i></button>
+        <button type="button" id="home-button" className="icon-button" data-route={homepage} onClick={viewChange}><img src={logo} alt="logo"></img></button>
       </nav>
       {screen === "home" && <Home viewChange={viewChange} />}
       {screen === "login" && <Login viewChange={viewChange} />}

@@ -31,8 +31,8 @@ export default function Register(props) {
             <FormField id="register-username" label="Username:" placeholder="johndoe" change={usernameChange} value={username} />
             <FormField id="register-password" label="Password:" placeholder="password" change={passwordChange} value={password} />
             <FormField id="register-email" label="Email:" placeholder="johndoe@website.com" change={emailChange} value={email} />
-            <button type="button" onClick={handleRegister}>Register</button>
-            <a href="#" onClick={props.viewChange} data-route="login">Already have an account? Login here.</a>
+            <button type="button" className="form-field form-button" onClick={handleRegister}>Register</button>
+            <a href="#" className="form-field" onClick={props.viewChange} data-route="login">Already have an account? Login here.</a>
         </div>
     )
 }
