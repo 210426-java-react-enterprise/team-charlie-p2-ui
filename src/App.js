@@ -6,7 +6,9 @@ import { React, useState } from 'react';
 import logo from './resources/logo.svg';
 
 function App() {
-  //useState("home") returns ["home", function for updating state]
+
+  // useState("home") returns ["home", function for updating state]
+  // needs state to hold favorite recipes (probably an array of objects) and meal plan (probably an object of objects)
   const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
@@ -27,8 +29,8 @@ function App() {
     <div id="app">
       {menu && <Menu menuOptions={menuOptions} viewChange={viewChange} />}
       <nav id="nav-bar">
-      <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className="fas fa-bars"></i></button>
-        <button type="button" id="home-button" className="icon-button" data-route={homepage} onClick={viewChange}><img src={logo} alt="logo"></img></button>
+        <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className="fas fa-bread-slice"></i></button>
+        <button type="button" id="home-button" className="icon-button" data-route={homepage} onClick={viewChange}><h1>Pantry.io</h1></button>
       </nav>
       {screen === "home" && <Home viewChange={viewChange} />}
       {screen === "login" && <Login viewChange={viewChange} />}

@@ -1,9 +1,24 @@
-/* color scheme::
-  orange: #e16916
-  brown: #5d3209
-  light red: #e13316
-  dark red: #9d240f
+/* color scheme:
+  dark brown (primary variable): #402921
+  orange (--highlight variable): #b25433
+  red (--secondary variable): #711e1d
+
+  to use css variable: var(--variable-name, fallbacks)
+  eg color: var(--primary, brown)
+
+  css variables make it so if a commonly used value changes you only have to change it in one place
+  feel free to create more
+
+  fonts:
+  'Caveat' (fancy font for headers and stuff)
+  'Raleway' (all purpose font, fallback should be sans-serif)
   */
+
+:root {
+  --primary: #402921;
+  --highlight: #b25433;
+  --secondary: #711e1d;
+}
 
 body {
   margin: 0;
@@ -38,10 +53,10 @@ body {
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   color: white;
-  background-color: #e16916;
+  background-color: var(--primary, black);
   grid-area: nav;
 }
 
@@ -52,9 +67,26 @@ body {
   cursor: pointer;
 }
 
-.icon-button > i, img {
-  width: 100px;
-  font-size: 2.5rem;
+.icon-button i {
+  margin: 1rem;
+  margin-right: .5rem;
+  font-size: 2rem;
+  pointer-events: none;
+}
+
+/* .icon-button > span {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: 'Caveat', sans-serif;
+  font-size: 1.5rem;
+} */
+
+.icon-button > h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-family: 'Caveat', sans-serif;
   pointer-events: none;
 }
 
@@ -76,18 +108,18 @@ body {
 #home > h1 {
   font-family: 'Caveat', cursive;
   font-size: 5rem;
-  color: #e16916;
+  color: var(--primary, black);
 }
 
 #home > h1 > span {
-  color: #9d240f;
+  color: var(--secondary, red);
   font-weight: 700;
 }
 
 #home-login, #home-register {
   width: 15rem;
   height: 3rem;
-  background-color: #e16916;
+  background-color: var(--primary, black);
   color: white;
   font-size: 1.5rem;
   font-family: inherit;
@@ -97,8 +129,8 @@ body {
 }
 
 #menu {
-  width: 200px;
-  background-color: #e16916;
+  width: 300px;
+  background-color: var(--primary, black);
   height: 100%;
 }
 
@@ -124,7 +156,7 @@ body {
 #login > h2, #register > h2 {
   font-family: 'Caveat', 'Raleway', cursive;
   font-size: 5rem;
-  color: #9d240f;
+  color: var(--secondary, red);
   font-weight: 700;
   margin: 0;
   margin-bottom: 2rem;
@@ -147,9 +179,9 @@ body {
 }
 
 .form-button {
-  border: 2px solid #e16916;
+  border: 2px solid var(--primary, black);
   color: white;
-  background-color: #e16916;
+  background-color: var(--primary, black);
   font-family: inherit;
   font-size: 1rem;
   width: 15rem;
