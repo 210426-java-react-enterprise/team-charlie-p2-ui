@@ -11,6 +11,8 @@ function App() {
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register"]);
+  const [currentUsername, setCurrentUsername] = useState("");
+  const [currentToken, setCurrentToken] = useState("");
 
   const viewChange = (e) => {
     const newScreen = e.target.getAttribute("data-route");
@@ -30,7 +32,7 @@ function App() {
       </nav>
       {screen === "home" && <Home viewChange={viewChange} />}
       {screen === "login" && <Login viewChange={viewChange} />}
-      {screen === "register" && <Register viewChange={viewChange} />}
+      {screen === "register" && <Register viewChange={viewChange} setCurrentUsername={setCurrentUsername} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
     </div>
   );
 }

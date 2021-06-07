@@ -118,9 +118,14 @@ export default function Register(props) {
             })
 
             if(authResp.status === 200){
-                console.log(authResp.headers.get('Authorization'));
-                console.log(authResp.headers);
-                return authResp.headers;
+                //console.log(authResp.headers.get('Authorization'));
+                //console.log(authResp.headers);
+                props.setCurrentToken(authResp.headers.get('Authorization'));
+                props.setCurrentUsername(registeredUsername);
+
+                props.setHomepage('dashboard');
+                props.setMenuOptions(['Search Recipes', 'Favorites', 'Meal Plan'])
+                props.viewChange('dashboard')
             }
             else{
                 console.log("There was an error authenticating your registered user!")
