@@ -6,7 +6,7 @@ import { React, useState } from 'react';
 import logo from './resources/logo.svg';
 
 function App() {
-
+  //useState("home") returns ["home", function for updating state]
   const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
