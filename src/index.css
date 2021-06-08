@@ -116,7 +116,7 @@ body {
   font-weight: 700;
 }
 
-#home-login, #home-register {
+#home-login, #home-register, #home-search {
   width: 15rem;
   height: 3rem;
   background-color: var(--primary, black);
