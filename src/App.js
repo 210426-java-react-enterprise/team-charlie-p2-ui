@@ -1,8 +1,11 @@
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Menu from "./components/Menu"
+
+import Menu from "./components/Menu";
+import Settings from "./components/Settings";
 import Search from "./components/Search"
+
 import { React, useState } from 'react';
 import logo from './resources/logo.svg';
 
@@ -27,6 +30,7 @@ function App() {
     setMenu(!menu);
   }
 
+
   const resetState = () => {
     setFavorites([]);
     setCurrentToken("");
@@ -36,6 +40,16 @@ function App() {
     viewChange(e);
     resetState();
   }
+
+
+  const reset = () => {
+    setScreen("home");
+    setHomepage("home");
+    setMenuOptions(["Login", "Register"]);
+    setCurrentUsername("");
+    setCurrentToken("");
+  }
+
 
   return (
     <div id="app">
@@ -48,6 +62,7 @@ function App() {
       {screen === "home" && <Home viewChange={viewChange} />}
       {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage}/>}
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
+      {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
     </div>
   );

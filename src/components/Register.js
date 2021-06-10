@@ -65,7 +65,7 @@ export default function Register(props) {
 
                 //Should set homepage to dashboard 
                 props.setHomepage('home');
-                props.setMenuOptions(['Search', 'Favorites', 'Meal Plan']);
+                props.setMenuOptions(['Search', 'Favorites', 'Meal Plan', 'Settings'])
                 props.viewChange(e);
             }
             else{
@@ -94,63 +94,3 @@ export default function Register(props) {
 
 
 
-    // const handleRegister = () => {
-    //     console.log("Registering...");
-    //     console.log(username);
-    //     console.log(password);
-    //     console.log(email);
-    //     fetch('http://localhost:5000/user/register', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(
-    //             {
-    //                 username,
-    //                 password,
-    //                 email
-    //             }
-    //         )
-    //     })
-    //     .then((res) => {
-    //         if(res.status !== 200){
-    //             console.log("We've encounterd an error with your request!")
-    //         } else{
-    //             console.log(res.status);
-    //             return res.json();
-    //         }
-    //     })
-    //     .then(json => {
-            
-    //         console.log(json);
-    //         const registeredUsername = json.username;
-    //         const registeredPassword = json.password;
-           
-    //         fetch('http://localhost:5000/auth', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //                 username: registeredUsername,
-    //                 password: registeredPassword
-    //             })
-    //         })
-    //         .then((resp) => {
-    //             if(resp.status === 200){
-    //                 console.log(resp.headers.get('Authorization'));
-    //                 console.log(resp.headers);
-    //                 return resp.headers;
-    //             }
-    //             else{
-    //                 console.log("There was an error authenticating your registered user!")
-    //             }
-    //         })
-    //         .then(data => {
-                
-    //         })
-    //     })
-    //     .catch(e =>{
-    //         console.log(e);
-    //     })
-    // }
