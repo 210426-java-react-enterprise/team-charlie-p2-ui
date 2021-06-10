@@ -24,7 +24,7 @@ export default function Settings(props) {
     }
 
     const handleDelete = async () => {
-        let res = await fetch('http://localhost:5000/user/deactivation', {
+        let res = await fetch('http://localhost:5000/user/account', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
