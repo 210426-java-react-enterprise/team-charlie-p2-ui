@@ -41,6 +41,7 @@ export default function Settings(props) {
         if(res.status !== 200){
             console.log("We've encounterd an error with deleting your account.")
         } else {
+            setDeleting(false);
             setDeleted(true);
             setTimeout(() => {
                 props.reset();
@@ -57,8 +58,8 @@ export default function Settings(props) {
                 <div id="confirm-delete" className="delete-popup">
                     <button type="button" id="exit-confirm-delete" onClick={toggleDelete} className="icon-button"><i className="fas fa-times"></i></button>
                     <h3>Please confirm your account details to delete your account.</h3>
-                    <FormField id="delete-confirm-username" label="Username" placeholder="johnsmith" onChange={handleUChange} value={username} />
-                    <FormField id="delete-confirm-password" label="Password" placeholder="password" onChange={handlePChange} value={password} />
+                    <FormField id="delete-confirm-username" label="Username" placeholder="johnsmith" change={handleUChange} value={username} />
+                    <FormField id="delete-confirm-password" label="Password" placeholder="password" change={handlePChange} value={password} />
                     <button type="button" className="rectangle-button" id="delete-confirm-button" onClick={handleDelete}>Confirm Delete</button>
                 </div>  
             </div>  
