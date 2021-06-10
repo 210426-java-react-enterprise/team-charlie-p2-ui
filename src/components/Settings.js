@@ -45,7 +45,7 @@ export default function Settings(props) {
             setDeleted(true);
             setTimeout(() => {
                 props.reset();
-            }, 10000);
+            }, 5000);
         }
     }
 
