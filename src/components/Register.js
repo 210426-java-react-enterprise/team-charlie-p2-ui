@@ -125,6 +125,7 @@ export default function Register(props) {
 
                 props.setHomepage('dashboard');
                 props.setMenuOptions(['Search', 'Favorites', 'Meal Plan', 'Settings'])
+
                 props.viewChange('dashboard')
             }
             else{

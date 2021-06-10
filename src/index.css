@@ -116,7 +116,8 @@ body {
   font-weight: 700;
 }
 
-#home-login, #home-register, .rectangle-button {
+
+#home-login, #home-register, .rectangle-button, #home-search{
   width: 15rem;
   height: 3rem;
   background-color: var(--primary, black);
