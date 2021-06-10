@@ -1,5 +1,6 @@
 import { React, useState} from 'react';
 import FormField from './FormField';
+//import {authenticate} from "../remote/login-service";
 
 export default function Register(props) {
 
@@ -19,68 +20,7 @@ export default function Register(props) {
         setEmail(e.target.value)
     }
 
-    // const handleRegister = () => {
-    //     console.log("Registering...");
-    //     console.log(username);
-    //     console.log(password);
-    //     console.log(email);
-    //     fetch('http://localhost:5000/user/register', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(
-    //             {
-    //                 username,
-    //                 password,
-    //                 email
-    //             }
-    //         )
-    //     })
-    //     .then((res) => {
-    //         if(res.status !== 200){
-    //             console.log("We've encounterd an error with your request!")
-    //         } else{
-    //             console.log(res.status);
-    //             return res.json();
-    //         }
-    //     })
-    //     .then(json => {
-            
-    //         console.log(json);
-    //         const registeredUsername = json.username;
-    //         const registeredPassword = json.password;
-           
-    //         fetch('http://localhost:5000/auth', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //                 username: registeredUsername,
-    //                 password: registeredPassword
-    //             })
-    //         })
-    //         .then((resp) => {
-    //             if(resp.status === 200){
-    //                 console.log(resp.headers.get('Authorization'));
-    //                 console.log(resp.headers);
-    //                 return resp.headers;
-    //             }
-    //             else{
-    //                 console.log("There was an error authenticating your registered user!")
-    //             }
-    //         })
-    //         .then(data => {
-                
-    //         })
-    //     })
-    //     .catch(e =>{
-    //         console.log(e);
-    //     })
-    // }
-
-    async function handleRegister() {
+    async function handleRegister(e) {
         console.log("Registering...");
 
         let res = await fetch('http://localhost:5000/user/register', {
@@ -97,14 +37,14 @@ export default function Register(props) {
             )
         })
 
-        if(res.status !== 200){
+        if(res.status !== 201){
             console.log("We've encounterd an error with your request!")
         } else{
             console.log(res.status);
-            let json = await res.json()
-            let registeredUsername = json.username;
-            let registeredPassword = json.password;
-            console.log(json);
+            // let json = await res.json()
+            // console.log(json);
+            // console.log(username);
+            // console.log(password);
 
             let authResp = await fetch('http://localhost:5000/auth', {
                 method: 'POST',
@@ -112,21 +52,21 @@ export default function Register(props) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    username: registeredUsername,
-                    password: registeredPassword
+                    username,
+                    password
                 })
             })
 
             if(authResp.status === 200){
-                //console.log(authResp.headers.get('Authorization'));
-                //console.log(authResp.headers);
+                console.log(authResp.headers.get('Authorization'));
                 props.setCurrentToken(authResp.headers.get('Authorization'));
-                props.setCurrentUsername(registeredUsername);
+                //props.setCurrentUsername(username);
+                
 
-                props.setHomepage('dashboard');
+                //Should set homepage to dashboard 
+                props.setHomepage('home');
                 props.setMenuOptions(['Search', 'Favorites', 'Meal Plan', 'Settings'])
-
-                props.viewChange('dashboard')
+                props.viewChange(e);
             }
             else{
                 console.log("There was an error authenticating your registered user!")
@@ -145,8 +85,12 @@ export default function Register(props) {
             <FormField id="register-username" label="Username:" placeholder="johndoe" change={usernameChange} value={username} />
             <FormField id="register-password" label="Password:" placeholder="password" change={passwordChange} value={password} />
             <FormField id="register-email" label="Email:" placeholder="johndoe@website.com" change={emailChange} value={email} />
-            <button type="button" className="form-field form-button" onClick={handleRegister}>Register</button>
+            {/* should change data-route to dashboard later */}
+            <button type="button" data-route='home' className="form-field form-button" onClick={handleRegister}>Register</button>
             <a href="#" className="form-field" onClick={props.viewChange} data-route="login">Already have an account? Login here.</a>
         </div>
     )
 }
+
+
+
