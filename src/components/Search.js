@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import Home from "./Home";
 import SearchQuery from "./SearchQuery";
 import SearchSelect from "./SearchSelect";
+// import {saveAllRecipes} from "../remote/favorite-service";
 
 export default function Search(props){
     const [ingredient, setIngredient] = useState("");
@@ -32,7 +33,8 @@ export default function Search(props){
         let res = await fetch(`http://localhost:5000/recipe/search?q=${q}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': props.currentToken
             }
         })
 
@@ -63,9 +65,24 @@ export default function Search(props){
                 addFavorite(recipes[i]);
             }
         }
-       console.log(props.favorites);
        setSearchPage('search-query');
        props.viewChange(e);
+       console.log(JSON.stringify(props.favorites));
+       //console.log(saveAllRecipes(props.favorties));
+       console.log(saveFavorites(props.favorites));
+    }
+
+    async function saveFavorites(favorites){
+        let saveResp = await fetch('http://localhost:5000/user/favorites', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': props.currentToken
+            },
+            body: JSON.stringify(favorites)
+        })
+
+        console.log(saveResp.status);
     }
 
 
@@ -82,5 +99,7 @@ export default function Search(props){
             {/* {searchPage === 'home' && props.viewChange('home')} */}
         </div>
     )
+
+    
 }
 
