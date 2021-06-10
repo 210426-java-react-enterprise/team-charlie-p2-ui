@@ -1,7 +1,11 @@
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Menu from "./components/Menu"
+
+import Menu from "./components/Menu";
+import Settings from "./components/Settings";
+import Search from "./components/Search"
+
 import { React, useState } from 'react';
 import logo from './resources/logo.svg';
 
@@ -12,17 +16,27 @@ function App() {
   const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
-  const [menuOptions, setMenuOptions] = useState(["Login", "Register"]);
+  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
+  const [favorites, setFavorites] = useState([]);
   const [currentUsername, setCurrentUsername] = useState("");
   const [currentToken, setCurrentToken] = useState("");
 
   const viewChange = (e) => {
+    console.log(e.target);
     const newScreen = e.target.getAttribute("data-route");
     setScreen(newScreen);
   }
 
   const toggleMenu = () => {
     setMenu(!menu);
+  }
+
+  const reset = () => {
+    setScreen("home");
+    setHomepage("home");
+    setMenuOptions(["Login", "Register"]);
+    setCurrentUsername("");
+    setCurrentToken("");
   }
 
   return (
@@ -35,6 +49,8 @@ function App() {
       {screen === "home" && <Home viewChange={viewChange} />}
       {screen === "login" && <Login viewChange={viewChange} />}
       {screen === "register" && <Register viewChange={viewChange} setCurrentUsername={setCurrentUsername} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
+      {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
+      {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites}/>}
     </div>
   );
 }
