@@ -1,7 +1,8 @@
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Menu from "./components/Menu"
+import Menu from "./components/Menu";
+import Settings from "./components/Settings";
 import { React, useState } from 'react';
 import logo from './resources/logo.svg';
 
@@ -25,6 +26,14 @@ function App() {
     setMenu(!menu);
   }
 
+  const reset = () => {
+    setScreen("home");
+    setHomepage("home");
+    setMenuOptions(["Login", "Register"]);
+    setCurrentUsername("");
+    setCurrentToken("");
+  }
+
   return (
     <div id="app">
       {menu && <Menu menuOptions={menuOptions} viewChange={viewChange} />}
@@ -35,6 +44,7 @@ function App() {
       {screen === "home" && <Home viewChange={viewChange} />}
       {screen === "login" && <Login viewChange={viewChange} />}
       {screen === "register" && <Register viewChange={viewChange} setCurrentUsername={setCurrentUsername} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
+      {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
     </div>
   );
 }

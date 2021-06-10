@@ -116,7 +116,7 @@ body {
   font-weight: 700;
 }
 
-#home-login, #home-register {
+#home-login, #home-register, .rectangle-button {
   width: 15rem;
   height: 3rem;
   background-color: var(--primary, black);
@@ -194,4 +194,61 @@ body {
 #login > a, #register > a {
   font-size: 1rem;
   margin-top: 2rem;
+}
+
+#settings {
+  box-sizing: border-box;
+  padding: 4rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#delete-account {
+  align-self: center;
+}
+
+.delete-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-popup {
+  box-sizing: border-box;
+  height: 80%;
+  width: 50%;
+  background: white;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem 2rem 2rem 2rem;
+
+}
+
+#delete-redirect {
+  justify-content: center;
+  padding: 10%;
+}
+
+#delete-redirect > p, #delete-redirect h3 {
+  text-align: center;
+}
+
+#exit-confirm-delete {
+  color: black;
+  align-self: flex-end;
+}
+
+#exit-confirm-delete > i {
+  font-size: 1rem;
+  width: 1rem;
+  margin: auto;
 }
