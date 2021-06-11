@@ -19,7 +19,7 @@ function App() {
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
   const [favorites, setFavorites] = useState([]);
   //const [currentUser, setCurrentUser] = useState({});
-  const [currentToken, setCurrentToken] = useState("");
+  const [currentToken, setCurrentToken] = useState("BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoiYXVzdGlua25hdWVyIiwiaXNzIjoicmV2YXR1cmUiLCJyb2xlIjoiQkFTSUNfVVNFUiIsImlhdCI6MTYyMzQ0MjUzMCwiZXhwIjoxNjIzNTI4OTMwfQ.biBwDkIxwkZt_5e9hVKYY6b6pRW4K0fQ-lJ6PHwZCTY");
 
   const viewChange = (e) => {
     const newScreen = e.target.getAttribute("data-route");
