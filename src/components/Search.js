@@ -6,12 +6,13 @@ import SearchSelect from "./SearchSelect";
 
 export default function Search(props){
     const [ingredient, setIngredient] = useState("");
-    const [q, setQ] = useState([]);
+    const [q, setQ] = useState("");
     const [recipes, setRecipes] = useState([]);
     const [searchPage, setSearchPage] = useState('search-query');
 
-    const ingredientChange = (e) =>{
-        setIngredient(e.target.value);
+    const ingredientQ= (e) =>{
+        //setIngredient(e.target.value);
+        setQ(e.target.value);
     }
 
     const addIngredientToQ = () => {
@@ -20,7 +21,9 @@ export default function Search(props){
     }
 
     const qChange = () =>{
-        const joinedQ = Object.values(q).join('+');
+        let joinedQ = q;
+        joinedQ = joinedQ.replace(' and ', '+');
+        joinedQ = joinedQ.replace(' ', '+');
         setQ(joinedQ);
     }
 
@@ -39,8 +42,9 @@ export default function Search(props){
         })
 
         if(res.status != 200){
-            console.log("We've encountered an error retrieving your recipes!")
-            console.log(res.status);
+            let errorMessage = await res.json();
+            console.log(errorMessage);
+
         }else{
             console.log(res.status);
             let json = await res.json();
@@ -94,7 +98,7 @@ export default function Search(props){
 
     return (
         <div id="search" className="screen">
-            {searchPage === 'search-query' && <SearchQuery addIngredientToQ={addIngredientToQ} ingredientChange={ingredientChange} qChange={qChange} handleSearch={handleSearch} ingredient={ingredient} />}
+            {searchPage === 'search-query' && <SearchQuery /*addIngredientToQ={addIngredientToQ} ingredientChange={ingredientChange}*/ ingredientQ={ingredientQ} q={q} setQ={setQ} qChange={qChange} handleSearch={handleSearch} /*setIngredient={setIngredient} ingredient={ingredient}*/ />}
             {searchPage === 'search-select' && <SearchSelect recipes={recipes} setFavorites={props.setFavorites} favorites={props.favorites} setSearchPage={setSearchPage} viewChange={props.viewChange} handleFavorites={handleFavorites}/>}
             {/* {searchPage === 'home' && props.viewChange('home')} */}
         </div>

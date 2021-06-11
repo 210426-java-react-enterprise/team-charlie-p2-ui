@@ -38,13 +38,10 @@ export default function Register(props) {
         })
 
         if(res.status !== 201){
-            console.log("We've encounterd an error with your request!")
+            let errorMessage = await res.json();
+            console.log(errorMessage);
         } else{
             console.log(res.status);
-            // let json = await res.json()
-            // console.log(json);
-            // console.log(username);
-            // console.log(password);
 
             let authResp = await fetch('http://localhost:5000/auth', {
                 method: 'POST',
@@ -69,7 +66,8 @@ export default function Register(props) {
                 props.viewChange(e);
             }
             else{
-                console.log("There was an error authenticating your registered user!")
+                let errorMessage = await authResp.json();
+                console.log(errorMessage);
             }
 
             
