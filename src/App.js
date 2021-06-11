@@ -18,7 +18,7 @@ function App() {
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
   const [favorites, setFavorites] = useState([]);
-  //const [currentUser, setCurrentUsername] = useState("");
+  //const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
 
   const viewChange = (e) => {
@@ -46,7 +46,7 @@ function App() {
     setScreen("home");
     setHomepage("home");
     setMenuOptions(["Login", "Register"]);
-    setCurrentUsername("");
+    //setCurrentUser({})
     setCurrentToken("");
   }
 

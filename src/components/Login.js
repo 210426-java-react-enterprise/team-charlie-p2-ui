@@ -33,7 +33,8 @@ export default function Login(props) {
             props.viewChange(e);
         }
         else{
-            console.log("There was an error authenticating your registered user!")
+            let errorMessage = await authResp.json();
+            console.log(errorMessage);
         }
     }
 
