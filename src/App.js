@@ -5,6 +5,7 @@ import Register from "./components/Register";
 import Menu from "./components/Menu";
 import Settings from "./components/Settings";
 import Search from "./components/Search"
+import MealPlan from "./components/MealPlan";
 
 import { React, useState } from 'react';
 import logo from './resources/logo.svg';
@@ -64,6 +65,7 @@ function App() {
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
+      {screen === "mealPlan" && <MealPlan viewChange={viewChange}/>}
     </div>
   );
 }
