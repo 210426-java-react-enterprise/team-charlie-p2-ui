@@ -6,7 +6,12 @@ import SearchSelect from "./SearchSelect";
 
 export default function Search(props){
     const [ingredient, setIngredient] = useState("");
+   
+   // if we don't have any need of this inside the search select component we can
+   // lower it to the search query component because the handle search component
+   // takes in the formatted query as a param now instead of using the state
     const [q, setQ] = useState("");
+    
     const [recipes, setRecipes] = useState([]);
     const [searchPage, setSearchPage] = useState('search-query');
 
@@ -15,25 +20,23 @@ export default function Search(props){
         setQ(e.target.value);
     }
 
-    const addIngredientToQ = () => {
-        const qArray = q.concat(ingredient);
-        setQ(qArray);
-    }
+    // const addIngredientToQ = () => {
+    //     const qArray = q.concat(ingredient);
+    //     setQ(qArray);
+    // }
 
-    const qChange = () =>{
-        let joinedQ = q;
-        joinedQ = joinedQ.replace(' and ', '+');
-        joinedQ = joinedQ.replace(' ', '+');
-        setQ(joinedQ);
-    }
+    // const qChange = () =>{
+    //     let joinedQ = q;
+    //     joinedQ = joinedQ.replace(' and ', '+');
+    //     joinedQ = joinedQ.replace(' ', '+');
+    //     setQ(joinedQ);
+    // }
 
 
-    async function handleSearch(){
+    async function handleSearch(query){
         console.log("Searching for recipes...");
-        
-        qChange();
 
-        let res = await fetch(`http://localhost:5000/recipe/search?q=${q}`, {
+        let res = await fetch(`http://localhost:5000/recipe/search?q=${query}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -98,7 +101,7 @@ export default function Search(props){
 
     return (
         <div id="search" className="screen">
-            {searchPage === 'search-query' && <SearchQuery /*addIngredientToQ={addIngredientToQ} ingredientChange={ingredientChange}*/ ingredientQ={ingredientQ} q={q} setQ={setQ} qChange={qChange} handleSearch={handleSearch} /*setIngredient={setIngredient} ingredient={ingredient}*/ />}
+            {searchPage === 'search-query' && <SearchQuery /*addIngredientToQ={addIngredientToQ} ingredientChange={ingredientChange}*/ ingredientQ={ingredientQ} q={q} setQ={setQ} /* qChange={qChange} */ handleSearch={handleSearch} /*setIngredient={setIngredient} ingredient={ingredient}*/ />}
             {searchPage === 'search-select' && <SearchSelect recipes={recipes} setFavorites={props.setFavorites} favorites={props.favorites} setSearchPage={setSearchPage} viewChange={props.viewChange} handleFavorites={handleFavorites}/>}
             {/* {searchPage === 'home' && props.viewChange('home')} */}
         </div>
