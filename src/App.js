@@ -2,6 +2,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Menu from "./components/Menu"
+import Favorites from "./components/Favorites"
 import { React, useState } from 'react';
 import logo from './resources/logo.svg';
 
@@ -12,9 +13,10 @@ function App() {
   const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
-  const [menuOptions, setMenuOptions] = useState(["Login", "Register"]);
+  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Favorites"]);
   const [currentUsername, setCurrentUsername] = useState("");
   const [currentToken, setCurrentToken] = useState("");
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   const viewChange = (e) => {
     const newScreen = e.target.getAttribute("data-route");
@@ -35,6 +37,7 @@ function App() {
       {screen === "home" && <Home viewChange={viewChange} />}
       {screen === "login" && <Login viewChange={viewChange} />}
       {screen === "register" && <Register viewChange={viewChange} setCurrentUsername={setCurrentUsername} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
+      {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} setHomepage={setHomepage} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
     </div>
   );
 }

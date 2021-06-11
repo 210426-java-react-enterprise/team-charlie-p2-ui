@@ -97,7 +97,7 @@ export default function Register(props) {
             )
         })
 
-        if(res.status !== 200){
+        if(res.status !== 201){
             console.log("We've encounterd an error with your request!")
         } else{
             console.log(res.status);

@@ -195,3 +195,10 @@ body {
   font-size: 1rem;
   margin-top: 2rem;
 }
+
+.favorite-recipe-div .inner-favorite-recipe-div {
+  padding: .5rem;
+  background-color: burlywood;
+  float: left;
+  display: block;
+}
