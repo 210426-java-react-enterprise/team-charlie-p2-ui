@@ -91,7 +91,10 @@ export default function Search(props){
             body: JSON.stringify(fav)
         })
 
-        console.log(saveResp.status);
+        let updatedUser = await saveResp.json();
+        props.setCurrentUser(updatedUser);
+        console.log(updatedUser);
+
     }
 
 
