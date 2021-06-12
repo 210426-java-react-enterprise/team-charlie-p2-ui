@@ -29,7 +29,7 @@ export default function Login(props) {
 
             //Should set homepage to dashboard 
             props.setHomepage('home');
-            props.setMenuOptions(['Search', 'Favorites', 'Meal Plan']);
+            props.setMenuOptions(['Search', 'Favorites', 'Plan']);
             props.viewChange(e);
         }
         else{

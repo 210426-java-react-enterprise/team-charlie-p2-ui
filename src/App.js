@@ -14,7 +14,7 @@ function App() {
 
   // useState("home") returns ["home", function for updating state]
   // needs state to hold favorite recipes (probably an array of objects) and meal plan (probably an object of objects)
-  const [screen, setScreen] = useState("home");
+  const [screen, setScreen] = useState("plan");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
@@ -65,7 +65,7 @@ function App() {
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
-      {screen === "mealPlan" && <MealPlan viewChange={viewChange} setUserId={viewChange} setMealPlan={viewChange}/>}
+      {screen === "plan" && <MealPlan viewChange={viewChange} setUserId={viewChange} setMealPlan={viewChange}/>}
     </div>
   );
 }
