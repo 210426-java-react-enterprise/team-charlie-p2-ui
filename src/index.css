@@ -105,6 +105,101 @@ body {
   font-family: 'Caveat', sans-serif;
   font-size: 1.5rem;
 } */
+.card-title{
+  padding-top: 0.5rem;
+}
+.card {
+  margin: 4rem;
+}
+
+
+.btn:hover {
+  background-color: #9e5f5d;
+}
+
+.btn:focus {
+  background-color: #9e5f5d;
+}
+
+
+.btn {
+  width: 50%;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: #711e1d;
+}
+
+/* input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+}
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 1.3rem;
+  height: 1.3rem;
+  top: 0;
+  left: 0;
+  border: 2px solid #555555;
+  border-radius: 3px;
+  background-color: white;
+}
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: .45rem;
+  height: 1rem;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: .05rem;
+  left: 0.41rem;
+} */
+
+input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+}
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  border: 2px solid #555555;
+  border-radius: 3px;
+  background-color: white;
+}
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
+}
+
+
+#favorite-button{
+  background-color: #711e1d;
+  margin-left: 43%;
+  height: 5rem;
+  margin-bottom: 2rem;
+}
+
 
 .icon-button > h1 {
   margin-bottom: 1rem;
@@ -115,13 +210,13 @@ body {
 
 #home-button {
   margin-right: calc(50% - 50px);
-  margin-bottom: .5rem;
+  margin-top: 1rem;
 }
 
 
 #logout-button {
   margin-left: calc(25%);
-  margin-bottom: .5rem;
+  margin-top: 1rem;
 }
 
 .screen {
@@ -183,7 +278,7 @@ body {
   align-items: center;
 }
 
-#login > h2, #register > h2, #search-query > h2 {
+#login > h2, #register > h2, #search-query > h2, #search-select >h2 {
   font-family: 'Caveat', 'Raleway', cursive;
   font-size: 5rem;
   color: var(--secondary, red);
@@ -192,8 +287,14 @@ body {
   margin-bottom: 2rem;
 }
 
+#search-select > h2{
+  margin-top: 5rem;
+  text-align: center;
+}
+
 .form-field {
   margin-top: 1rem;
+  
 }
 
 .form-field > label {

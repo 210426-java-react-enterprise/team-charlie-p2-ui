@@ -18,7 +18,7 @@ function App() {
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
-  const [favorites, setFavorites] = useState([]);
+
 
 
   const [currentUser, setCurrentUser] = useState({});
@@ -35,7 +35,7 @@ function App() {
 
 
   const resetState = () => {
-    setFavorites([]);
+    setCurrentUser({});
     setCurrentToken("");
   }
 
@@ -49,7 +49,7 @@ function App() {
     setScreen("home");
     setHomepage("home");
     setMenuOptions(["Login", "Register"]);
-    //setCurrentUser({})
+    setCurrentUser({})
     setCurrentToken("");
   }
 
@@ -66,7 +66,7 @@ function App() {
       {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage}/>}
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
-      {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
+      {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
     
     </div>
   );
