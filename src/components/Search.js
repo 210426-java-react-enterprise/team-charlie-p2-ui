@@ -9,6 +9,8 @@ export default function Search(props){
     const [q, setQ] = useState("");
     const [recipes, setRecipes] = useState([]);
     const [searchPage, setSearchPage] = useState('search-query');
+    const [errorPresent, setErrorPresent] = useState(false);
+    const [errorMessage, setErrorMessage] = useState({});
 
     const ingredientQ= (e) =>{
         //setIngredient(e.target.value);
@@ -42,12 +44,15 @@ export default function Search(props){
         })
 
         if(res.status != 200){
-            let errorMessage = await res.json();
-            console.log(errorMessage);
+            let err = await res.json();
+            setErrorMessage(err);
+            setErrorPresent(true);
 
         }else{
             console.log(res.status);
             let json = await res.json();
+
+            props.setCurrentUser(json);
 
             // console.log(json);
             setRecipes(json);
@@ -98,7 +103,7 @@ export default function Search(props){
 
     return (
         <div id="search" className="screen">
-            {searchPage === 'search-query' && <SearchQuery /*addIngredientToQ={addIngredientToQ} ingredientChange={ingredientChange}*/ ingredientQ={ingredientQ} q={q} setQ={setQ} qChange={qChange} handleSearch={handleSearch} /*setIngredient={setIngredient} ingredient={ingredient}*/ />}
+            {searchPage === 'search-query' && <SearchQuery /*addIngredientToQ={addIngredientToQ} ingredientChange={ingredientChange}*/ ingredientQ={ingredientQ} q={q} setQ={setQ} qChange={qChange} handleSearch={handleSearch} errorMessage={errorMessage} errorPresent={errorPresent}/*setIngredient={setIngredient} ingredient={ingredient}*/ />}
             {searchPage === 'search-select' && <SearchSelect recipes={recipes} setFavorites={props.setFavorites} favorites={props.favorites} setSearchPage={setSearchPage} viewChange={props.viewChange} handleFavorites={handleFavorites}/>}
             {/* {searchPage === 'home' && props.viewChange('home')} */}
         </div>

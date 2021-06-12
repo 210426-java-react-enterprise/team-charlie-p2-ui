@@ -7,6 +7,7 @@ import Settings from "./components/Settings";
 import Search from "./components/Search"
 
 import { React, useState } from 'react';
+import AlertBox from "./components/AlertBox"
 import logo from './resources/logo.svg';
 
 function App() {
@@ -18,7 +19,9 @@ function App() {
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
   const [favorites, setFavorites] = useState([]);
-  //const [currentUser, setCurrentUser] = useState({});
+
+
+  const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
 
   const viewChange = (e) => {
@@ -63,7 +66,8 @@ function App() {
       {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage}/>}
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
-      {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
+      {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
+    
     </div>
   );
 }

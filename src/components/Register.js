@@ -1,5 +1,6 @@
 import { React, useState} from 'react';
 import FormField from './FormField';
+import AlertBox from "./AlertBox"
 //import {authenticate} from "../remote/login-service";
 
 export default function Register(props) {
@@ -7,6 +8,9 @@ export default function Register(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [closed, setClosed] = useState(false);
+    const [errorPresent, setErrorPresent] = useState(false);
+    const [errorMessage, setErrorMessage] = useState({});
 
     const usernameChange = (e) => {
         setUsername(e.target.value)
@@ -38,8 +42,10 @@ export default function Register(props) {
         })
 
         if(res.status !== 201){
-            let errorMessage = await res.json();
-            console.log(errorMessage);
+            let err = await res.json();
+            console.log(err);
+            setErrorMessage(err);
+            setErrorPresent(true);
         } else{
             console.log(res.status);
 
@@ -83,6 +89,7 @@ export default function Register(props) {
             <FormField id="register-username" label="Username:" placeholder="johndoe" change={usernameChange} value={username} />
             <FormField id="register-password" label="Password:" placeholder="password" change={passwordChange} value={password} />
             <FormField id="register-email" label="Email:" placeholder="johndoe@website.com" change={emailChange} value={email} />
+            {errorPresent && !closed && <AlertBox setClosed={setClosed} errorMessage={errorMessage} />}
             {/* should change data-route to dashboard later */}
             <button type="button" data-route='home' className="form-field form-button" onClick={handleRegister}>Register</button>
             <a href="#" className="form-field" onClick={props.viewChange} data-route="login">Already have an account? Login here.</a>

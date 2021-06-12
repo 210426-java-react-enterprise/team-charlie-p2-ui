@@ -73,6 +73,29 @@ body {
   font-size: 2rem;
   pointer-events: none;
 }
+/* The close button */
+.close-btn {
+  margin-left: 15px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: black;
+}
+
+.alert-box{
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #fd2d1e; /* Red */
+  color: white;
+  /* margin-bottom: 15px; */
+}
 
 /* .icon-button > span {
   display: flex;
@@ -92,6 +115,12 @@ body {
 
 #home-button {
   margin-right: calc(50% - 50px);
+  margin-bottom: .5rem;
+}
+
+
+#logout-button {
+  margin-left: calc(25%);
   margin-bottom: .5rem;
 }
 
@@ -154,7 +183,7 @@ body {
   align-items: center;
 }
 
-#login > h2, #register > h2 {
+#login > h2, #register > h2, #search-query > h2 {
   font-family: 'Caveat', 'Raleway', cursive;
   font-size: 5rem;
   color: var(--secondary, red);
