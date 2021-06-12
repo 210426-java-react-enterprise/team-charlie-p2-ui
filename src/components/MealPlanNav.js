@@ -1,9 +1,12 @@
 import {React, useState} from 'react';
-import './components/meal-plan.css';
-import { Container, Row, Col } from 'reactstrap';
+import './css/meal.css';
 
-import leftArrow from './resources/meal-plan/left-arrow.png';
-import rightArrow from './resources/meal-plan/right-arrow.png';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import leftArrow from './resources/left-arrow.png';
+import rightArrow from './resources/right-arrow.png';
 
 export default function MealPlanNav(props){
     
@@ -15,9 +18,9 @@ export default function MealPlanNav(props){
         <>
         <Row class="meal-plan-nav">
             <Col class="btn-container">
-                <Div class="arrow-left-btn arrow">
+                <div class="arrow-left-btn arrow">
                     <img class="arrow-img" src={leftArrow} alt="left-arrow"/>
-                </Div>
+                </div>
             </Col>
             <Col class="calendar container" xs="6">
                 <div class="calendar">
