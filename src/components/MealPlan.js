@@ -5,6 +5,7 @@ import './css/plan.css';
 
 
 import MealPlanNav from './MealPlanNav';
+import MealDayPlan from './MealDayPlan';
 
 
 export default function MealPlan(props){
@@ -13,7 +14,7 @@ export default function MealPlan(props){
 
     return(
         <>
-            <MealPlanNav/>            
+            <MealPlanNav/>         
         </>
     )
 

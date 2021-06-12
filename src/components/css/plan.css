@@ -24,10 +24,10 @@ body{
 }
 
 .arrowLeftBtnstyles{
-  
+  margin-left: 30%
 }
 .arrowRightBtnstyles{
-  
+  margin-right: 30%;
 }
 
 .arrowImg{
@@ -59,10 +59,6 @@ body{
 
 .recipeSlct{
   width: 90%;
-}
-
-.saveBtnContainer{
-  margin-top: 5%;
 }
 
 .btn{

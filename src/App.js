@@ -65,7 +65,7 @@ function App() {
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
-      {screen === "plan" && <MealPlan viewChange={viewChange} setUserId={viewChange} setMealPlan={viewChange}/>}
+      {screen === "plan" && <MealPlan viewChange={viewChange} />}
     </div>
   );
 }

@@ -1,13 +1,14 @@
 import {React, useState} from 'react';
 import './css/plan.css';
 
+import MealDayPlan from './MealDayPlan';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import leftArrow from './resources/left-arrow.png';
 import rightArrow from './resources/right-arrow.png';
-import { alignPropType } from 'react-bootstrap/esm/DropdownMenu';
 
 export default function MealPlanNav(props){
     
@@ -28,14 +29,15 @@ export default function MealPlanNav(props){
                     <div class="dayPlanDetails" style={{fontSize:`${1.25}rem`}}>
                         <label for="dayPlan">Pick your day!!!</label>
                     </div>
-                    <input type="date" id="calendar" name="dayPlan" value={'1997-08-12'} min={minDate} max={maxDate} />
+                    <input type="date" id="calendar" name="dayPlan" value="2021-06-12" min={minDate} max={maxDate} />
                 </Col>
                 <Col md={4} class="btnContainer">
                     <div class="arrowRightBtnstyles arrow" style={{ marginTop: `${1}rem` }}>
                         <img class="arrowImg" src={rightArrow} alt="rightArrow" style={{marginLeft:`${20}%`}}/>
                     </div>    
-                </Col>
+                </Col> 
             </Row>
+                <MealDayPlan/>      
         </Container>
         </>
     )
