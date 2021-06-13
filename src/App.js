@@ -5,7 +5,10 @@ import Menu from "./components/Menu"
 import Dashboard from "./components/Dashboard";
 import Search from "./components/Search";
 import SearchSelect from "./components/SearchSelect";
+import Favorites from "./components/Favorites"
+import Settings from "./components/Settings";
 import { React, useState } from 'react';
+import AlertBox from "./components/AlertBox";
 import logo from './resources/logo.svg';
 
 function App() {
@@ -15,12 +18,12 @@ function App() {
   const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
-  const [menuOptions, setMenuOptions] = useState(["Login", "Register"]);
-  const [favorites, setFavorites] = useState([]);
   const [currentUsername, setCurrentUsername] = useState("");
+  const [q, setQ] = useState('');
+  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
   const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
-  const [q, setQ] = useState('');
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
 
   const viewChange = (e) => {
@@ -32,6 +35,27 @@ function App() {
     setMenu(!menu);
   }
 
+
+  const resetState = () => {
+    setCurrentUser({});
+    setCurrentToken("");
+  }
+
+  const logout = (e) =>{
+    viewChange(e);
+    resetState();
+  }
+
+
+  const reset = () => {
+    setScreen("home");
+    setHomepage("home");
+    setMenuOptions(["Login", "Register"]);
+    setCurrentUser({})
+    setCurrentToken("");
+  }
+
+
   return (
     <div id="app">
       {menu && <Menu menuOptions={menuOptions} viewChange={viewChange} />}
@@ -40,12 +64,13 @@ function App() {
         <button type="button" id="home-button" className="icon-button" data-route={homepage} onClick={viewChange}><h1>Pantry.io</h1></button>
       </nav>
       {screen === "home" && <Home viewChange={viewChange} setCurrentUser={setCurrentUser} />}
-      {screen === "login" && <Login viewChange={viewChange} />}
-      {screen === "register" && <Register viewChange={viewChange} setCurrentUsername={setCurrentUsername} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
       {screen === "dashboard" && <Dashboard viewChange={viewChange} setMenuOptions={setMenuOptions} setCurrentUser={setCurrentUser} currentToken={currentToken} currentUser={currentUser} setQ={setQ} q={q} />}
-      {screen === "search" && <Search viewChange={viewChange} setCurrentUser={setCurrentUser} currentToken={currentToken} q={q} setQ={setQ} />}
       {screen === "search-select" && <SearchSelect viewChange={viewChange} setCurrentUser={setCurrentUser} currentToken={currentToken} q={q} />}
-      {screen === "favorites"}
+      {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} setHomepage={setHomepage} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
+      {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser}/>}
+      {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
+      {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
+      {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
     </div>
   );
 }

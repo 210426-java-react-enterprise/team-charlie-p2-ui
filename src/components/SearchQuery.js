@@ -1,14 +1,29 @@
 import {React, useState} from 'react'
 import FormField from './FormField';
+import AlertBox from './AlertBox';
 
 export default function SearchQuery(props) {
 
+    function initiateQChange(){
+        props.qChange();
+    }
+
+    async function submitSearch(){
+        let joinedQ = props.q;
+        props.setQ("");
+        joinedQ = joinedQ.replace(' and ', '+');
+        joinedQ = joinedQ.replace(' ', '+');
+        await props.handleSearch(joinedQ);
+        
+        console.log(props.q);
+    }
+
     return (
-        <div className="search-query">
-            <h2>Search recipes by ingredients!</h2>
-            <FormField id="search-ingredient" label="Ingredient:" placeholder="chicken" change={props.ingredientChange} value={props.ingredient} />
-            <button type="button" className="form-field form-button" onClick={props.addIngredientToQ}>Add Ingredient</button> <br/>
-            <button type="button" className="form-field form-button" onMouseDown={props.qChange} onMouseUp={props.handleSearch}>Search</button>
+        <div id="search-query" className="screen">
+            <h2>Search for Recipes!</h2>
+            <FormField id="search-ingredient" label="Ingredients" placeholder="ex: chicken and waffles" change={props.ingredientQ} value={props.q} />
+            {props.errorPresent && !props.closed && <AlertBox setClosed={props.setClosed} errorMessage={props.errorMessage}/>}
+            <button type="button" className="form-field form-button" onMouseUp={initiateQChange} onClick={submitSearch}>Search</button>
         </div>
     )
 }

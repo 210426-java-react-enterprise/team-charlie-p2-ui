@@ -1,4 +1,5 @@
-import React from 'react'
+import {React, useState} from 'react'
+import AlertBox from "./AlertBox"
 
 export default function Home(props) {
 
@@ -7,6 +8,8 @@ export default function Home(props) {
             username: 'user'
         })
       }
+    const [closed, setClosed] = useState(false);
+    const [errorPresent, setErrorPresent] = useState(false);
 
     return (
         <div id="home" className="screen">
@@ -16,6 +19,7 @@ export default function Home(props) {
             <button type="button" id="home-search" data-route="search" onClick={props.viewChange}>Search</button>
             <button type="button" id="home-dash" data-route="dashboard" onClick={props.viewChange}>Dashboard</button>
             <button type="button" id="dummy-button" data-route="dummy-route" onClick={invokeOnce}>dummybutton</button>
+            {errorPresent && !closed && <AlertBox setClosed={setClosed}/>}
         </div>
     )
 }
