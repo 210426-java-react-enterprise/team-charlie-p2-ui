@@ -15,6 +15,7 @@ function App() {
   // needs state to hold favorite recipes (probably an array of objects) and meal plan (probably an object of objects)
   const [screen, setScreen] = useState("settings");
   const [landing, setLanding] = useState(false);
+  const [spin, setSpin] = useState("no-spin");
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Dashboard", "Search", "Favorites", "Meal Plan", "Settings"]);
   const [favorites, setFavorites] = useState([]);
@@ -27,6 +28,8 @@ function App() {
   }
 
   const toggleMenu = () => {
+    const newClass = menu ? "unspinny" : "spinny";
+    setSpin(newClass);
     setMenu(!menu);
   }
 
@@ -45,9 +48,9 @@ function App() {
 
   return (
     <div id="app">
-      {menu && <Menu menuOptions={menuOptions} viewChange={viewChange} />}
+      <Menu menuOptions={menuOptions} viewChange={viewChange} menu={menu} />
       {!landing && <nav id="nav-bar">
-        <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className="fas fa-bread-slice"></i></button>
+        <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className={`fas fa-bread-slice ${spin}`}></i></button>
         <button type="button" id="home-button" className="icon-button" data-route="dashboard" onClick={viewChange}><h1>Pantry.io</h1></button>
         <button type="button" id="logout-button" className="icon-button" data-route="login" onClick={reset}><h1>Logout</h1></button>
       </nav>}
