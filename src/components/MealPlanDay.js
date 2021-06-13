@@ -77,9 +77,9 @@ export default function MealPlanDay(props){
     
 
     function removeMealTime(){
+            setCount(() => count - 1); 
             const newMealTimeRow = mealTimeRows.filter(Row => Row.key != count);
             setMealTimeRows(newMealTimeRow);
-            setCount(() => count - 1); 
             console.log(count);
     }
     
