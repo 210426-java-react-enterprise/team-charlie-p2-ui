@@ -7,6 +7,7 @@ import Favorite from './Favorite.js';
 export default function Favorites(props) {
     const Authorization = props.currentToken;
 
+
     async function getFavorites() {
         console.log("Getting favorite recipes...");
         
@@ -14,7 +15,7 @@ export default function Favorites(props) {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoicnRheWxvciIsImlzcyI6InJldmF0dXJlIiwicm9sZSI6IkJBU0lDX1VTRVIiLCJpYXQiOjE2MjMzNTA5NDYsImV4cCI6MTYyMzQzNzM0Nn0.b_1OBdBUb2E6GZ1-joPGYkMBiFuMCkGxO0IGrgz5VyE'
+                'Authorization': 'BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoicnRheWxvciIsImlzcyI6InJldmF0dXJlIiwicm9sZSI6IkJBU0lDX1VTRVIiLCJpYXQiOjE2MjM1NDY2MjQsImV4cCI6MTYyMzYzMzAyNH0.yMhPFaCe7Z9ipS7qxhm8-xKmNVd46wo8JktYaVpBhns'
             }
         });
 
@@ -24,15 +25,16 @@ export default function Favorites(props) {
         } else {
             let json = await response.json();
             let recipes = [];
-            //console.log(json);
+            console.log(json);
             for (const [key, value] of Object.entries(json)) {
                 recipes.push({
-                    id: value.id,
+                    id: value.recipeId,
                     label: value.label,
                     calories: value.calories,
                     yield: value.yield,
                     url: value.url,
-                    image: value.image
+                    image: value.image,
+                    prepared: value.timesPrepared
                 });
             }
             console.log(recipes);
@@ -48,7 +50,7 @@ export default function Favorites(props) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoicnRheWxvciIsImlzcyI6InJldmF0dXJlIiwicm9sZSI6IkJBU0lDX1VTRVIiLCJpYXQiOjE2MjMzNTA5NDYsImV4cCI6MTYyMzQzNzM0Nn0.b_1OBdBUb2E6GZ1-joPGYkMBiFuMCkGxO0IGrgz5VyE'
+                'Authorization': 'BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoicnRheWxvciIsImlzcyI6InJldmF0dXJlIiwicm9sZSI6IkJBU0lDX1VTRVIiLCJpYXQiOjE2MjM1NDY2MjQsImV4cCI6MTYyMzYzMzAyNH0.yMhPFaCe7Z9ipS7qxhm8-xKmNVd46wo8JktYaVpBhns'
             }
         }
         );
@@ -70,6 +72,35 @@ export default function Favorites(props) {
         }
     }
 
+    async function handleUpdate(amount, recipeId) {
+        let response = await fetch(`http://localhost:5000/user/favorite`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : 'BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoicnRheWxvciIsImlzcyI6InJldmF0dXJlIiwicm9sZSI6IkJBU0lDX1VTRVIiLCJpYXQiOjE2MjM1NDY2MjQsImV4cCI6MTYyMzYzMzAyNH0.yMhPFaCe7Z9ipS7qxhm8-xKmNVd46wo8JktYaVpBhns'
+            },
+            body: JSON.stringify({
+               timesPrepared: amount,
+               recipeId: recipeId
+            })
+        });
+        if(response.status !== 200) {
+            console.log(response.status);
+            console.log('Something went wrong in the request');
+        } else {
+            let recipes = props.favoriteRecipes;
+
+            for(let i = 0; i < recipes.length; i++) {
+                if (recipes[i].id === recipeId) {
+                    recipes[i].prepared = amount;
+                }
+            }
+            console.log(recipes);
+            props.setFavoriteRecipes(recipes);
+            getFavorites();
+        }
+    }
+
     return (
         <div id="favorite-recipe" className="favorite-recipe-div">
             <button onClick={getFavorites}>click me</button>
@@ -82,8 +113,11 @@ export default function Favorites(props) {
                     url={recipe.url}
                     image={recipe.image}
                     calories={recipe.calories}
+                    prepared={recipe.prepared}
                     handleRemoval={ () => (
-                        handleRemoval(recipe.id))} />))}
+                        handleRemoval(recipe.id))}
+                    handleUpdate={() => (handleUpdate((recipe.prepared + 1), recipe.id)
+                    )} />))}
 
         </div>
     )
