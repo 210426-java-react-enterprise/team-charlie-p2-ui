@@ -1,11 +1,13 @@
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Menu from "./components/Menu"
 import Settings from "./components/Settings";
-import Search from "./components/Search"
+import Favorites from "./components/Favorites"
+import Menu from "./components/Menu";
+import Settings from "./components/Settings";
+import Search from "./components/Search";
 import { React, useState } from 'react';
-import AlertBox from "./components/AlertBox"
+import AlertBox from "./components/AlertBox";
 import logo from './resources/logo.svg';
 
 function App() {
@@ -59,6 +61,7 @@ function App() {
         <button type="button" id="logout-button" className="icon-button" data-route='home' onClick={logout}><h1>Logout</h1></button>
       </nav>
       {screen === "home" && <Home viewChange={viewChange} />}
+      {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} setHomepage={setHomepage} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
       {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser}/>}
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}

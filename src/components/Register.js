@@ -89,10 +89,7 @@ export default function Register(props) {
             
         }
     }
-            
-        
-
-
+                
     return (
         <div id="register" className="screen">
             <h2>Let's get you cooking!</h2>
