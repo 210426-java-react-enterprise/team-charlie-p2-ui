@@ -2,7 +2,6 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Menu from "./components/Menu"
-import Favorites from "./components/Favorites"
 import Settings from "./components/Settings";
 import Search from "./components/Search"
 import { React, useState } from 'react';
@@ -16,11 +15,9 @@ function App() {
   const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
-  const [currentUsername, setCurrentUsername] = useState("");
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
   const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
-  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
 
   const viewChange = (e) => {
@@ -62,7 +59,6 @@ function App() {
         <button type="button" id="logout-button" className="icon-button" data-route='home' onClick={logout}><h1>Logout</h1></button>
       </nav>
       {screen === "home" && <Home viewChange={viewChange} />}
-      {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} setHomepage={setHomepage} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
       {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser}/>}
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}

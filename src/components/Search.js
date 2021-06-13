@@ -24,12 +24,12 @@ export default function Search(props){
     //     setQ(qArray);
     // }
 
-    // const qChange = () =>{
-    //     let joinedQ = q;
-    //     joinedQ = joinedQ.replace(' and ', '+');
-    //     joinedQ = joinedQ.replace(' ', '+');
-    //     setQ(joinedQ);
-    // }
+    const qChange = () =>{
+        let joinedQ = q;
+        joinedQ = joinedQ.replace(' and ', '+');
+        joinedQ = joinedQ.replace(' ', '+');
+        setQ(joinedQ);
+    }
 
 
     async function handleSearch(query){
