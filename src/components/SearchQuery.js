@@ -9,8 +9,11 @@ export default function SearchQuery(props) {
     }
 
     async function submitSearch(){
-        await props.setQ('');
-        await props.handleSearch();
+        let joinedQ = props.q;
+        props.setQ("");
+        joinedQ = joinedQ.replace(' and ', '+');
+        joinedQ = joinedQ.replace(' ', '+');
+        await props.handleSearch(joinedQ);
         
         console.log(props.q);
     }

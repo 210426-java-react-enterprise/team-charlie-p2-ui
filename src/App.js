@@ -19,10 +19,9 @@ function App() {
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
 
-
-
   const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
+
 
   const viewChange = (e) => {
     const newScreen = e.target.getAttribute("data-route");
