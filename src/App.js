@@ -7,6 +7,7 @@ import Settings from "./components/Settings";
 import Search from "./components/Search"
 
 import { React, useState } from 'react';
+import AlertBox from "./components/AlertBox"
 import logo from './resources/logo.svg';
 
 function App() {
@@ -17,9 +18,10 @@ function App() {
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
-  const [favorites, setFavorites] = useState([]);
-  //const [currentUser, setCurrentUser] = useState({});
-  const [currentToken, setCurrentToken] = useState("BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoiYXVzdGlua25hdWVyIiwiaXNzIjoicmV2YXR1cmUiLCJyb2xlIjoiQkFTSUNfVVNFUiIsImlhdCI6MTYyMzQ0MjUzMCwiZXhwIjoxNjIzNTI4OTMwfQ.biBwDkIxwkZt_5e9hVKYY6b6pRW4K0fQ-lJ6PHwZCTY");
+
+  const [currentUser, setCurrentUser] = useState({});
+  const [currentToken, setCurrentToken] = useState("");
+
 
   const viewChange = (e) => {
     const newScreen = e.target.getAttribute("data-route");
@@ -32,7 +34,7 @@ function App() {
 
 
   const resetState = () => {
-    setFavorites([]);
+    setCurrentUser({});
     setCurrentToken("");
   }
 
@@ -46,7 +48,7 @@ function App() {
     setScreen("home");
     setHomepage("home");
     setMenuOptions(["Login", "Register"]);
-    //setCurrentUser({})
+    setCurrentUser({})
     setCurrentToken("");
   }
 
@@ -60,10 +62,11 @@ function App() {
         <button type="button" id="logout-button" className="icon-button" data-route='home' onClick={logout}><h1>Logout</h1></button>
       </nav>
       {screen === "home" && <Home viewChange={viewChange} />}
-      {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage}/>}
-      {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
+      {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser}/>}
+      {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
-      {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
+      {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
+    
     </div>
   );
 }
