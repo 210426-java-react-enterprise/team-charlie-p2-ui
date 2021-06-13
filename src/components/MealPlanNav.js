@@ -1,7 +1,7 @@
 import {React, useState} from 'react';
 import './css/plan.css';
 
-import MealDayPlan from './MealDayPlan';
+import MealPlanDay from './MealPlanDay';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -11,6 +11,7 @@ import leftArrow from './resources/left-arrow.png';
 import rightArrow from './resources/right-arrow.png';
 
 export default function MealPlanNav(props){
+    
     
     //let defaultDate = new Date().format('Y-m-d');
     let minDate = "2021-06-01";
@@ -37,7 +38,7 @@ export default function MealPlanNav(props){
                     </div>    
                 </Col> 
             </Row>
-                <MealDayPlan/>      
+                <MealPlanDay setCurrentUser={props.setCurrentUser} currentUser = {props.currentUser}/>      
         </Container>
         </>
     )

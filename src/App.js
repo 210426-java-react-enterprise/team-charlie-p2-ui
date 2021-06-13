@@ -19,7 +19,18 @@ function App() {
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
   const [favorites, setFavorites] = useState([]);
-  //const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState([{ 
+        date:"",
+        time:"",
+        recipe:{
+            id:"",
+            label:"",
+            calories:"",
+            yield:"",
+            url:"",
+            image:""
+          }}]);
+
   const [currentToken, setCurrentToken] = useState("");
 
   const viewChange = (e) => {
@@ -65,7 +76,7 @@ function App() {
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
-      {screen === "plan" && <MealPlan viewChange={viewChange} />}
+      {screen === "plan" && <MealPlan viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}
     </div>
   );
 }
