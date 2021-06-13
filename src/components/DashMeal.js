@@ -20,6 +20,7 @@ export default function DashMeal(props) {
 
 
     function update(meal, value) {
+        console.log('update called');
         let updatedUser = props.currentUser;
         meal.eaten = value;
         if (updatedUser.meals) {
@@ -78,7 +79,7 @@ export default function DashMeal(props) {
             if (meal.time.toLowerCase() === labels[index]) {
                 currentMeali++;
                 return (
-                    <CheckButton id={`meal${meal.time}`} label={labelMaker(recipe)} onClick={update(meal, !meal.eaten)} />
+                    <CheckButton id={`meal${meal.time}`} label={labelMaker(recipe)} onClick={() => (update(meal, !meal.eaten))} />
                 )
             } else {
                 return (
