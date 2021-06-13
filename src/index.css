@@ -154,13 +154,45 @@ body {
   align-items: center;
 }
 
-#login > h2, #register > h2 {
+#login, #register {
+    grid-area: auto/auto/auto/auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v864-mind-foodillustrations-52a_1_2.jpg?w=1000&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=b8e8e4b3dfbe0b551c56894ba315b727) repeat center;
+    background-size: 400px auto;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    padding: 1rem;
+    width: 450px;
+    height: 450px;
+    background-color: rgba(247, 247, 247);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#login h1, #register h1 {
   font-family: 'Caveat', 'Raleway', cursive;
-  font-size: 5rem;
-  color: var(--secondary, red);
+  font-size: 3rem;
+  color: var(--primary, black);
   font-weight: 700;
-  margin: 0;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
+}
+
+#login h1 > span, #register h1 > span {
+  color: #cd322f;
+  font-weight: 700;
 }
 
 .form-field {
@@ -180,9 +212,10 @@ body {
 }
 
 .form-button {
-  border: 2px solid var(--primary, black);
+  border: 2px solid #cd322f;
   color: white;
-  background-color: var(--primary, black);
+  font-weight: bold;
+  background-color: #cd322f;
   font-family: inherit;
   font-size: 1rem;
   width: 15rem;
@@ -192,9 +225,17 @@ body {
   margin-top: 2rem;
 }
 
-#login > a, #register > a {
+#login a, #register a {
   font-size: 1rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
+}
+
+#login a:visited {
+  color: #0000EE;
+}
+
+#register a:visited {
+  color: #0000EE;
 }
 
 #settings {

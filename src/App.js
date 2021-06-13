@@ -13,13 +13,13 @@ function App() {
 
   // useState("home") returns ["home", function for updating state]
   // needs state to hold favorite recipes (probably an array of objects) and meal plan (probably an object of objects)
-  const [screen, setScreen] = useState("home");
-  const [homepage, setHomepage] = useState("home");
+  const [screen, setScreen] = useState("register");
+  const [landing, setLanding] = useState(true);
   const [menu, setMenu] = useState(false);
-  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
+  const [menuOptions, setMenuOptions] = useState(["Dashboard", "Search", "Favorites", "Meal Plan", "Settings"]);
   const [favorites, setFavorites] = useState([]);
-  //const [currentUser, setCurrentUser] = useState({});
-  const [currentToken, setCurrentToken] = useState("BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoiYXVzdGlua25hdWVyIiwiaXNzIjoicmV2YXR1cmUiLCJyb2xlIjoiQkFTSUNfVVNFUiIsImlhdCI6MTYyMzQ0MjUzMCwiZXhwIjoxNjIzNTI4OTMwfQ.biBwDkIxwkZt_5e9hVKYY6b6pRW4K0fQ-lJ6PHwZCTY");
+  const [currentUser, setCurrentUser] = useState({});
+  const [currentToken, setCurrentToken] = useState("");
 
   const viewChange = (e) => {
     const newScreen = e.target.getAttribute("data-route");
@@ -31,37 +31,29 @@ function App() {
   }
 
 
-  const resetState = () => {
-    setFavorites([]);
+  const reset = (e) => {
+    setLanding(true);
+    setCurrentUser({});
     setCurrentToken("");
-  }
-
-  const logout = (e) =>{
-    viewChange(e);
-    resetState();
-  }
-
-
-  const reset = () => {
-    setScreen("home");
-    setHomepage("home");
-    setMenuOptions(["Login", "Register"]);
-    //setCurrentUser({})
-    setCurrentToken("");
+    if (e != undefined) {
+      viewChange(e);
+    } else {
+      setScreen("register");
+    }
   }
 
 
   return (
     <div id="app">
       {menu && <Menu menuOptions={menuOptions} viewChange={viewChange} />}
-      <nav id="nav-bar">
+      {!landing && <nav id="nav-bar">
         <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className="fas fa-bread-slice"></i></button>
-        <button type="button" id="home-button" className="icon-button" data-route={homepage} onClick={viewChange}><h1>Pantry.io</h1></button>
-        <button type="button" id="logout-button" className="icon-button" data-route='home' onClick={logout}><h1>Logout</h1></button>
-      </nav>
+        <button type="button" id="home-button" className="icon-button" data-route="dashboard" onClick={viewChange}><h1>Pantry.io</h1></button>
+        <button type="button" id="logout-button" className="icon-button" data-route="login" onClick={reset}><h1>Logout</h1></button>
+      </nav>}
       {screen === "home" && <Home viewChange={viewChange} />}
-      {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage}/>}
-      {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
+      {screen === "login" && <Login setLanding={setLanding} viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} />}
+      {screen === "register" && <Register setLanding={setLanding} viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
     </div>

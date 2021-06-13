@@ -28,8 +28,7 @@ export default function Login(props) {
             
 
             //Should set homepage to dashboard 
-            props.setHomepage('home');
-            props.setMenuOptions(['Search', 'Favorites', 'Meal Plan']);
+            props.setLanding(false);
             props.viewChange(e);
         }
         else{
@@ -48,12 +47,14 @@ export default function Login(props) {
 
     return (
         <div id="login" className="screen">
-            <h2>Welcome back!</h2>
+            <div className="card">
+            <h1>Welcome back!</h1>
             <FormField id="login-username" label="Username" placeholder="johndoe" change={usernameChange} value={username} />
             <FormField id="login-password" label="Password" placeholder="password" change={passwordChange} value={password} />
             {/* I need to wchange the data route back to the dashboard rather than home */}
             <button type="button" data-route="home" className="form-field form-button" onClick={handleLogin}>Log In</button>
             <a href="#" className="form-field" onClick={props.viewChange} data-route="register">New User? Click here to register.</a>
+            </div>
         </div>
     )
 }
