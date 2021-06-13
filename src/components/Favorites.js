@@ -7,6 +7,9 @@ import Favorite from './Favorite.js';
 export default function Favorites(props) {
     const Authorization = props.currentToken;
 
+    useEffect(() => {
+        getFavorites();
+    }, []);
 
     async function getFavorites() {
         console.log("Getting favorite recipes...");
@@ -15,7 +18,7 @@ export default function Favorites(props) {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoicnRheWxvciIsImlzcyI6InJldmF0dXJlIiwicm9sZSI6IkJBU0lDX1VTRVIiLCJpYXQiOjE2MjM1NDY2MjQsImV4cCI6MTYyMzYzMzAyNH0.yMhPFaCe7Z9ipS7qxhm8-xKmNVd46wo8JktYaVpBhns'
+                'Authorization': props.currentToken
             }
         });
 
@@ -50,7 +53,7 @@ export default function Favorites(props) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoicnRheWxvciIsImlzcyI6InJldmF0dXJlIiwicm9sZSI6IkJBU0lDX1VTRVIiLCJpYXQiOjE2MjM1NDY2MjQsImV4cCI6MTYyMzYzMzAyNH0.yMhPFaCe7Z9ipS7qxhm8-xKmNVd46wo8JktYaVpBhns'
+                'Authorization': props.currentToken
             }
         }
         );
@@ -77,7 +80,7 @@ export default function Favorites(props) {
             method: 'PATCH',
             headers: {
                 'Content-Type' : 'application/json',
-                'Authorization' : 'BearereyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoicnRheWxvciIsImlzcyI6InJldmF0dXJlIiwicm9sZSI6IkJBU0lDX1VTRVIiLCJpYXQiOjE2MjM1NDY2MjQsImV4cCI6MTYyMzYzMzAyNH0.yMhPFaCe7Z9ipS7qxhm8-xKmNVd46wo8JktYaVpBhns'
+                'Authorization' : props.currentToken
             },
             body: JSON.stringify({
                timesPrepared: amount,
@@ -102,8 +105,10 @@ export default function Favorites(props) {
     }
 
     return (
+        (props.favoriteRecipes.length === 0) ? 
+        <h2>You have no favorites yet!</h2>
+        :
         <div id="favorite-recipe" className="favorite-recipe-div">
-            <button onClick={getFavorites}>click me</button>
             {props.favoriteRecipes.map((recipe, index) => (
                 <Favorite
                     key={index}

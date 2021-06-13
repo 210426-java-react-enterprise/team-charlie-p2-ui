@@ -8,7 +8,7 @@ export default function Favorite(props) {
             <h2>Name: {props.label}</h2>
             <img src={props.image} width="400rem" height="300rem"/>
             <p><strong>Servings:</strong> {props.yield} <br></br><strong>Calories:</strong> {props.calories}
-            <strong>Times prepared: </strong>{props.prepared}</p>
+            <strong><br></br>Times prepared: </strong>{props.prepared}</p>
             <a href={props.url}>Find it here!</a><br></br><br></br>
             <button onClick = {props.handleRemoval}>Remove from favorites</button>
              <br></br>
