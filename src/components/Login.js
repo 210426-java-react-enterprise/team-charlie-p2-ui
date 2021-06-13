@@ -27,9 +27,13 @@ export default function Login(props) {
         })
 
         if(authResp.status === 200){
-            console.log(authResp.headers.get('Authorization'));
+            let json = await authResp.json();
+            console.log(json)
+            props.setCurrentUser(json);
+        
+            //console.log(authResp.headers.get('Authorization'));
             props.setCurrentToken(authResp.headers.get('Authorization'));
-            //props.setCurrentUsername(username);
+           
             
 
             //Should set homepage to dashboard 
@@ -39,6 +43,7 @@ export default function Login(props) {
         }
         else{
             let err = await authResp.json();
+            
             setErrorPresent(true);
             setErrorMessage(err);
         }

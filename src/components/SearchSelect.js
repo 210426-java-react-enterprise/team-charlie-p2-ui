@@ -12,7 +12,7 @@ export default function SearchSelect(props) {
     for(let recipe of props.recipes){
         console.log(recipe);
         const row = (
-            <div className="col-sm-4">
+            <div key={`${props.recipes.indexOf(recipe)}`}className="col-sm-4">
             <div className="card text-center">
                 <div className="card-header">
                     <h5 className="card-title"><strong>{recipe.label}</strong></h5>
@@ -22,8 +22,8 @@ export default function SearchSelect(props) {
                     <p className="card-text"><strong>Calories:</strong> {recipe.calories}</p>
                     <p className="card-text"><strong>Servings:</strong>  {recipe.yield}</p>
                     <div className="row">    
-                    <div class="col-12">           
-                        <a href={recipe.url} data-ignore='true' class="btn btn-primary" target="_blank" rel="noreferrer">See Recipe</a>
+                    <div className="col-12">           
+                        <a href={recipe.url} data-ignore='true' className="btn btn-primary" target="_blank" rel="noreferrer">See Recipe</a>
                     </div>
                         {/* Click on it and store this one's favorite into a state object? */}
                         {/* <button onClick={props.changeFavorites} className="btn btn-primary">Favorite</button> */}

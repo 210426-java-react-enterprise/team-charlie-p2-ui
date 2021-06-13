@@ -90,6 +90,7 @@ body {
 }
 
 .alert-box{
+  width:20rem;
   margin: 1rem;
   padding: 1rem;
   background-color: #fd2d1e; /* Red */
@@ -113,16 +114,17 @@ body {
 }
 
 
-.btn:hover {
+.card-body .btn:hover {
   background-color: #9e5f5d;
 }
 
-.btn:focus {
+.card-body .btn:focus {
   background-color: #9e5f5d;
+  box-shadow: none!important;
 }
 
 
-.btn {
+.card-body .btn {
   width: 50%;
   justify-content: center;
   margin-top: 1rem;

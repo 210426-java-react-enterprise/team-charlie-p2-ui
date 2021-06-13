@@ -44,6 +44,7 @@ export default function Register(props) {
         if(res.status !== 201){
             let err = await res.json();
             console.log(err);
+            //setClosed(false);
             setErrorMessage(err);
             setErrorPresent(true);
         } else{
@@ -61,9 +62,15 @@ export default function Register(props) {
             })
 
             if(authResp.status === 200){
-                console.log(authResp.headers.get('Authorization'));
+               
+                let json = await authResp.json();
+                console.log(json)
+                props.setCurrentUser(json);
+
+                //console.log(authResp.headers.get('Authorization'));
                 props.setCurrentToken(authResp.headers.get('Authorization'));
-                //props.setCurrentUsername(username);
+                
+            
                 
 
                 //Should set homepage to dashboard 
