@@ -1,16 +1,10 @@
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-<<<<<<< HEAD
 import Menu from "./components/Menu"
 import Favorites from "./components/Favorites"
-=======
-
-import Menu from "./components/Menu";
 import Settings from "./components/Settings";
 import Search from "./components/Search"
-
->>>>>>> 8bdc435ba209175f3566401861c9cd174c49d418
 import { React, useState } from 'react';
 import AlertBox from "./components/AlertBox"
 import logo from './resources/logo.svg';
@@ -22,14 +16,9 @@ function App() {
   const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
-<<<<<<< HEAD
-  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Favorites"]);
   const [currentUsername, setCurrentUsername] = useState("");
-=======
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
-
   const [currentUser, setCurrentUser] = useState({});
->>>>>>> 8bdc435ba209175f3566401861c9cd174c49d418
   const [currentToken, setCurrentToken] = useState("");
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
@@ -73,17 +62,11 @@ function App() {
         <button type="button" id="logout-button" className="icon-button" data-route='home' onClick={logout}><h1>Logout</h1></button>
       </nav>
       {screen === "home" && <Home viewChange={viewChange} />}
-<<<<<<< HEAD
-      {screen === "login" && <Login viewChange={viewChange} />}
-      {screen === "register" && <Register viewChange={viewChange} setCurrentUsername={setCurrentUsername} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
       {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} setHomepage={setHomepage} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
-=======
       {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser}/>}
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
-    
->>>>>>> 8bdc435ba209175f3566401861c9cd174c49d418
     </div>
   );
 }
