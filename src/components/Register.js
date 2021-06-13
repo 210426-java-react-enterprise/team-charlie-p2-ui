@@ -44,15 +44,11 @@ export default function Register(props) {
         })
 
         if(res.status !== 201){
-<<<<<<< HEAD
-            console.log("We've encounterd an error with your request!")
-=======
             let err = await res.json();
             console.log(err);
             //setClosed(false);
             setErrorMessage(err);
             setErrorPresent(true);
->>>>>>> 8bdc435ba209175f3566401861c9cd174c49d418
         } else{
             console.log(res.status);
 
@@ -93,10 +89,7 @@ export default function Register(props) {
             
         }
     }
-            
-        
-
-
+                
     return (
         <div id="register" className="screen">
             <h2>Let's get you cooking!</h2>
