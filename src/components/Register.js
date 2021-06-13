@@ -72,8 +72,9 @@ export default function Register(props) {
                 props.viewChange(e);
             }
             else{
-                let errorMessage = await authResp.json();
-                console.log(errorMessage);
+                let err = await authResp.json();
+                setErrorMessage(err);
+                setErrorPresent(true);
             }
 
             
