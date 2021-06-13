@@ -13,14 +13,14 @@ export default function DashFavs(props) {
      */
     function initializeScreen() {
         // Before anything else, checks if props.favorites is empty and returns a null response
-        if (props.favorites === []) {
+        if (props.currentUser.favorites === []) {
             return <p>You have no favorites yet!</p>
         }
 
         // Otherwise iterates through list of favorites and pulls the first five, ordering them in a list.
         const favsList = [];
         let decrementor = 5;
-        for (let recipe of props.favorites) {
+        for (let recipe of props.currentUser.favorites) {
             if (decrementor) {
                 const row = (
                     <li className='dashboard-list'>
