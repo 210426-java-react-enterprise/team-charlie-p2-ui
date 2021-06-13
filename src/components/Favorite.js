@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
 
 export default function Favorite(props) {
-
+ /* <h2>Name: {props.label}</h2> */
     return(
         
-        <div id={props.id} className="inner-favorite-recipe-div">
-            <h2>Name: {props.label}</h2>
-            <img src={props.image} width="400rem" height="300rem"/>
-            <p><strong>Servings:</strong> {props.yield} <br></br><strong>Calories:</strong> {props.calories}
-            <strong><br></br>Times prepared: </strong>{props.prepared}</p>
-            <a href={props.url}>Find it here!</a><br></br><br></br>
-            <button onClick = {props.handleRemoval}>Remove from favorites</button>
-             <br></br>
-             <button onClick = {props.handleUpdate}>Have you made this recipe? Record it here!</button>
+        <div id={props.id} className="col-sm-4">
+          <div className="card text-center">
+              <div className="card-header">
+                  <h5 className="card-title"><strong>{props.label}</strong></h5>
+              </div>
+          </div>
+          <div className="card-body">
+              <a href={props.url} data-ignore='true' target="_blank" rel="noreferrer"><img src={props.image} alt={props.url}/></a>
+              <p className="card-text"><strong>Calories: </strong>{props.calories}</p>
+              <p className="card-text"><strong>Servings: </strong>{props.yield}</p>
+              <p className="card-text"><strong>Times Prepared: </strong>{props.prepared}</p>
+              <div className="row">
+                  <div className="col-12">
+                      <a href={props.url} data-ignore='true' className="btn btn-primary" target="_blank" rel="noreferrer">See Recipe</a>
+                  </div>
+                  <div>
+                      <button onClick={props.handleUpdate} className="btn btn-primary">Prepared this? Record it here!</button>
+                  </div>
+              </div>
+          </div>
+            
+
         </div>
     );
 }

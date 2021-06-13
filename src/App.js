@@ -16,7 +16,7 @@ function App() {
   const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
-  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
+  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search", "Favorite"]);
   const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
