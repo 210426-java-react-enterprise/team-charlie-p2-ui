@@ -334,13 +334,12 @@ input[type=checkbox]:checked:after {
   margin-top: 2rem;
 }
 
-<<<<<<< HEAD
 .favorite-recipe-div .inner-favorite-recipe-div {
   padding: .5rem;
   background-color: burlywood;
   float: left;
   display: block;
-=======
+}
 #settings {
   box-sizing: border-box;
   padding: 4rem;
@@ -396,5 +395,4 @@ input[type=checkbox]:checked:after {
   font-size: 1rem;
   width: 1rem;
   margin: auto;
->>>>>>> 8bdc435ba209175f3566401861c9cd174c49d418
 }
