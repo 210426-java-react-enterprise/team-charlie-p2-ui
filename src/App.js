@@ -1,7 +1,6 @@
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Settings from "./components/Settings";
 import Favorites from "./components/Favorites"
 import Menu from "./components/Menu";
 import Settings from "./components/Settings";
@@ -20,6 +19,7 @@ function App() {
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
   const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
 
   const viewChange = (e) => {
