@@ -14,6 +14,8 @@ export default function Login(props) {
 
     async function handleLogin(e) {
         console.log("Authenticating login...");
+        //this resets the closed state so if they close the box and try again, the AlertBox will reappear
+        setClosed(false);
 
         let authResp = await fetch('http://localhost:5000/auth', {
             method: 'POST',

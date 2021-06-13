@@ -5,11 +5,12 @@ import SearchSelect from "./SearchSelect";
 // import {saveAllRecipes} from "../remote/favorite-service";
 
 export default function Search(props){
-    const [ingredient, setIngredient] = useState("");
+    // const [ingredient, setIngredient] = useState("");
     const [q, setQ] = useState("");
     const [recipes, setRecipes] = useState([]);
     const [searchPage, setSearchPage] = useState('search-query');
     const [favorites, setFavorites] = useState([]);
+    const [closed, setClosed] = useState(false);
     const [errorPresent, setErrorPresent] = useState(false);
     const [errorMessage, setErrorMessage] = useState({});
 
@@ -18,10 +19,10 @@ export default function Search(props){
         setQ(e.target.value);
     }
 
-    const addIngredientToQ = () => {
-        const qArray = q.concat(ingredient);
-        setQ(qArray);
-    }
+    // const addIngredientToQ = () => {
+    //     const qArray = q.concat(ingredient);
+    //     setQ(qArray);
+    // }
 
     const qChange = () =>{
         let joinedQ = q;
@@ -33,6 +34,8 @@ export default function Search(props){
 
     async function handleSearch(){
         console.log("Searching for recipes...");
+        //this resets the closed state so if they close the box and try again, the AlertBox will reappear
+        setClosed(false);
         
         qChange();
 
@@ -106,7 +109,7 @@ export default function Search(props){
 
     return (
         <div id="search" className="screen">
-            {searchPage === 'search-query' && <SearchQuery /*addIngredientToQ={addIngredientToQ} ingredientChange={ingredientChange}*/ ingredientQ={ingredientQ} q={q} setQ={setQ} qChange={qChange} handleSearch={handleSearch} errorMessage={errorMessage} errorPresent={errorPresent}/*setIngredient={setIngredient} ingredient={ingredient}*/ />}
+            {searchPage === 'search-query' && <SearchQuery /*addIngredientToQ={addIngredientToQ} ingredientChange={ingredientChange}*/ ingredientQ={ingredientQ} q={q} setQ={setQ} qChange={qChange} handleSearch={handleSearch} errorMessage={errorMessage} errorPresent={errorPresent} setClosed={setClosed} closed={closed}/*setIngredient={setIngredient} ingredient={ingredient}*/ />}
             {searchPage === 'search-select' && <SearchSelect recipes={recipes} setFavorites={setFavorites} favorites={favorites} setSearchPage={setSearchPage} viewChange={props.viewChange} handleFavorites={handleFavorites}/>}
             {/* {searchPage === 'home' && props.viewChange('home')} */}
         </div>

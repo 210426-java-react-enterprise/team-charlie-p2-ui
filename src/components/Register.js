@@ -26,6 +26,8 @@ export default function Register(props) {
 
     async function handleRegister(e) {
         console.log("Registering...");
+        //this resets the closed state so if they close the box and try again, the AlertBox will reappear
+        setClosed(false);
 
         let res = await fetch('http://localhost:5000/user/register', {
             method: 'POST',
