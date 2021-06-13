@@ -6,7 +6,7 @@ import SearchSelect from "./SearchSelect";
 
 export default function Search(props){
     const [ingredient, setIngredient] = useState("");
-    const [q, setQ] = useState([]);
+    const [q, setQ] = useState(props.q);
     const [recipes, setRecipes] = useState([]);
     const [searchPage, setSearchPage] = useState('search-query');
 
@@ -19,7 +19,7 @@ export default function Search(props){
         setQ(qArray);
     }
 
-    const qChange = () =>{
+    const qChange = () => {
         const joinedQ = Object.values(q).join('+');
         setQ(joinedQ);
     }
