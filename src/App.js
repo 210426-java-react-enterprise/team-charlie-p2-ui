@@ -14,22 +14,12 @@ function App() {
 
   // useState("home") returns ["home", function for updating state]
   // needs state to hold favorite recipes (probably an array of objects) and meal plan (probably an object of objects)
-  const [screen, setScreen] = useState("plan");
+  const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
   const [favorites, setFavorites] = useState([]);
-  const [currentUser, setCurrentUser] = useState([{ 
-        date:"",
-        time:"",
-        recipe:{
-            id:"",
-            label:"",
-            calories:"",
-            yield:"",
-            url:"",
-            image:""
-          }}]);
+  const [currentUser, setCurrentUser] = useState({});
 
   const [currentToken, setCurrentToken] = useState("");
 
@@ -58,7 +48,7 @@ function App() {
     setScreen("home");
     setHomepage("home");
     setMenuOptions(["Login", "Register"]);
-    //setCurrentUser({})
+    setCurrentUser({})
     setCurrentToken("");
   }
 
