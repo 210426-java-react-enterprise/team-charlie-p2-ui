@@ -56,7 +56,7 @@ export default function Search(props){
         }else{
             console.log(res.status);
             let json = await res.json();
-
+            // props.setCurrentUser(json);
             // console.log(json);
             setRecipes(json);
             setSearchPage('search-select');
