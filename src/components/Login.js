@@ -37,7 +37,7 @@ export default function Login(props) {
             props.setCurrentToken(authResp.headers.get('Authorization'));
            
             //Should set homepage to dashboard 
-            props.setHomepage('dashboard');
+            props.setHomepage('home');
             props.setMenuOptions(['Dashboard', 'Search', 'Favorites', 'Meal Plan', 'Logout']);
             props.viewChange(e);
         }

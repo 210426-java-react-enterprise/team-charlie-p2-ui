@@ -7,6 +7,7 @@ import Search from "./components/Search";
 import SearchSelect from "./components/SearchSelect";
 import Favorites from "./components/Favorites"
 import Settings from "./components/Settings";
+import MealPlan from "./components/MealPlan";
 import { React, useState } from 'react';
 import AlertBox from "./components/AlertBox";
 import logo from './resources/logo.svg';
@@ -19,8 +20,7 @@ function App() {
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
   const [currentUsername, setCurrentUsername] = useState("");
-  const [q, setQ] = useState('');
-  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
+  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search", "Favorite"]);
   const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
@@ -71,6 +71,7 @@ function App() {
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
+      {screen === "plan" && <MealPlan viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}
     </div>
   );
 }
