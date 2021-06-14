@@ -52,23 +52,29 @@ export default function MealPlanNav(props){
         }
         
         dayPlanSup.date = date;
-        console.log(e);
-        switch (e) {
-            case 0:
-                dayPlanSup.time = "Breakfast";
-                break;
-            case 1:
-                dayPlanSup.time = "Lunch";
-                break;
-            case 2:
-                dayPlanSup.time = "Dinner";
-                break;               
-            default:
-                dayPlanSup.time = "Snack";
-                break;
-        }
+        dayPlanSup.recipe = props.currentUser.favorites[e.target.value];
+        dayPlanSup.time = e.target.getAttribute("data-label");
+        // console.log(e);
+        // switch (e) {
+        //     case 0:
+        //         dayPlanSup.time = "Breakfast";
+        //         break;
+        //     case 1:
+        //         dayPlanSup.time = "Lunch";
+        //         break;
+        //     case 2:
+        //         dayPlanSup.time = "Dinner";
+        //         break;               
+        //     default:
+        //         dayPlanSup.time = "Snack";
+        //         break;
+        // }
 
         //dayPlanSup.recipe = findFavRecipeInfo(e.currentTarget.key);
+        const currentId = e.target.value;
+        console.log(e.target.value);
+        console.log("too many logs");
+        console.log(e.target.getAttribute("data-label"));
         console.log(dayPlanSup);
         setDayPlan(dayPlan => [...dayPlan, dayPlanSup]);
         
@@ -97,6 +103,7 @@ export default function MealPlanNav(props){
 
     async function fetchMealPlan(){
         console.log("fecthing Meal Plan...");
+        console.log(dayPlan);
 
         let jsonBody = {
             userId: props.currentUser.user_id,
@@ -105,8 +112,6 @@ export default function MealPlanNav(props){
 
         console.log(JSON.stringify(jsonBody));
 
-        console.log(jsonBody);
-        console.log(props.currentUser);
         let res = await fetch(`http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/meals/save/plan`, {
             method: 'POST',
             headers: {
