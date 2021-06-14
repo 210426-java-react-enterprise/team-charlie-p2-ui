@@ -76,6 +76,30 @@ body {
   font-size: 2rem;
   pointer-events: none;
 }
+/* The close button */
+.close-btn {
+  margin-left: 15px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: black;
+}
+
+.alert-box{
+  width:20rem;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #fd2d1e; /* Red */
+  color: white;
+  /* margin-bottom: 15px; */
+}
 
 /* .icon-button > span {
   display: flex;
@@ -85,6 +109,107 @@ body {
   font-family: 'Caveat', sans-serif;
   font-size: 1.5rem;
 } */
+.card-title{
+  padding-top: 0.5rem;
+}
+.card {
+  margin: 4rem;
+}
+
+
+.card-body .btn:hover {
+  background-color: #9e5f5d;
+}
+
+.card-body .btn:focus {
+  background-color: #9e5f5d;
+  box-shadow: none!important;
+}
+
+
+.card-body .btn {
+  width: 50%;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: #711e1d;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+}
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 1.3rem;
+  height: 1.3rem;
+  top: 0;
+  left: 0;
+  border: 2px solid #555555;
+  border-radius: 3px;
+  background-color: white;
+}
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: .45rem;
+  height: 1rem;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: .05rem;
+  left: 0.41rem;
+} */
+
+input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+}
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  border: 2px solid #555555;
+  border-radius: 3px;
+  background-color: white;
+}
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
+}
+
+
+#favorite-button{
+  background-color: #711e1d;
+  margin-left: 43%;
+  height: 5rem;
+  margin-bottom: 2rem;
+}
+
 
 .icon-button > h1 {
   margin-bottom: 1rem;
@@ -95,7 +220,13 @@ body {
 
 #home-button {
   margin-right: calc(50% - 50px);
-  margin-bottom: .5rem;
+  margin-top: 1rem;
+}
+
+
+#logout-button {
+  margin-left: calc(25%);
+  margin-top: 1rem;
 }
 
 #logout-button {
@@ -318,8 +449,14 @@ body {
   font-weight: 700;
 }
 
+#search-select > h2{
+  margin-top: 5rem;
+  text-align: center;
+}
+
 .form-field {
   margin-top: 1rem;
+  
 }
 
 .form-field > label {
@@ -361,6 +498,12 @@ body {
   color: #0000EE;
 }
 
+.favorite-recipe-div .inner-favorite-recipe-div {
+  padding: .5rem;
+  background-color: burlywood;
+  float: left;
+  display: block;
+}
 #settings {
   box-sizing: border-box;
   padding: 4rem;
@@ -416,4 +559,48 @@ body {
   font-size: 1rem;
   width: 1rem;
   margin: auto;
+}
+
+/* #dash-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+} */
+
+#dash-head-block {
+  order: 0;
+  flex-basis: 0;
+  /* flex-grow: 12; */
+}
+
+#dash-search-block {
+  order: 1;
+}
+
+#dash-double-block {
+  order: 2;
+  display: flex;
+  flex-direction: row;
+}
+
+#dash-meal-block {
+  flex: 8;
+  order: 1;
+}
+
+#dash-fav-block {
+  flex: 4;
+  order: 2;
+}
+
+.dash-fav-button {
+  flex: 1;
+
+}
+
+.dashboard-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
 }
