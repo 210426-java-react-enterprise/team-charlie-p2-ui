@@ -18,9 +18,9 @@ export default function(props) {
 
     return (
         <div className="search-query">
-            <h2>Search for recipes by their ingredients!</h2>
-            <FormField id='dash-search' label='Ingredients:' placeholder='ingredients' onChange={changeQuery} value={props.q} /> {/* Not 100% sure with onChange and value yet */}
-            <button type='button' className='form-field form-button' data-route={setRoute()} onClick={props.viewChange}>Search</button>
+            <h2>Start searching for recipes today!</h2>
+            {/* <FormField id='dash-search' label='Ingredients:' placeholder='ingredients' value={props.q} onChange={changeQuery} /> Not 100% sure with onChange and value yet */}
+            <button type='button' className='form-field form-button' data-route={'search'} onClick={props.viewChange}>Search</button>
         </div>
     )
 }

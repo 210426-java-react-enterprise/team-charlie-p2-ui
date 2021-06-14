@@ -20,20 +20,26 @@ export default function DashFavs(props) {
         // Otherwise iterates through list of favorites and pulls the first five, ordering them in a list.
         const favsList = [];
         let decrementor = 5;
-        for (let recipe of props.currentUser.favorites) {
-            if (decrementor) {
-                const row = (
-                    <li className='dashboard-list'>
-                        <button type='button' className='dash-fav-button' onClick={() => window.open(recipe.url, '_blank')}>{recipe.label}</button>
-                    </li>
-                )
-                favsList.push(row);
-                decrementor--;
-            } else {
-                break;
-            }
+        if (props.currentUser.favorites) {
+            for (let recipe of props.currentUser.favorites) {
+                if (decrementor) {
+                    const row = (
+                        <li className='dashboard-list'>
+                            <button type='button' className='dash-fav-button' onClick={() => window.open(recipe.url, '_blank')}>{recipe.label}</button>
+                        </li>
+                    )
+                    favsList.push(row);
+                    decrementor--;
+                } else {
+                    break;
+                }
+            } 
+            return favsList;
+        } else {
+            return <p>No favorite recipes yet!</p>;
         }
-        return favsList;
+        
+        
     }
 
 
@@ -44,13 +50,13 @@ export default function DashFavs(props) {
     function renderScreen() {
         return (
             <div className='dashboard-favorites'>
-                <button type='button' className='dash-fav-head' data-route='favorites' onClick={props.viewChange}>
-                    <h2>Favorite Recipes</h2>
+                <button type='button' className='dash-fav-head' data-route={'favorites'} onClick={props.viewChange}>
+                    Favorite Recipes
                 </button>
                 <ul id='dash-fav-list' className='dashboard-list'>
                     {initializeScreen()}
                 </ul>
-                <div className='hyperlink' id='view-all-favorites'><a href='#' data-route='favorites' onClick={props.viewChange}>View All</a></div> 
+                <div className='hyperlink' id='view-all-favorites'><a href='#' data-route={'favorites'} onClick={props.viewChange}>View All</a></div> 
             </div>
         )
     }

@@ -10,7 +10,7 @@ import CheckButton from './CheckButton';
 export default function DashMeal(props) {
 
     const today = getTodaysDate();
-    const todaysMeals = props.meals.filter(meal => meal.date === today );
+    const todaysMeals = setTodaysMeals();
     const labels = ['breakfast', 'lunch', 'dinner', 'snack'];
     const calorieTotal = calcCalories();
     
@@ -23,22 +23,27 @@ export default function DashMeal(props) {
         console.log('update called');
         let updatedUser = props.currentUser;
         meal.eaten = value;
-        if (updatedUser.meals) {
-            for (let foundMeal of updatedUser.meals) {
+        if (updatedUser.mealTimeList) {
+            for (let foundMeal of updatedUser.mealTimeList) {
                 if (foundMeal.date === meal.date && foundMeal.time === meal.time) {
                     foundMeal = meal;
-                    console.log(updatedUser.meals)
+                    props.setCurrentUser(updatedUser);
+                    break;
                 }
             }
         }
-        
-
-
     }
 
+    function setTodaysMeals() {
+        if (props.currentUser.mealTimeList){
+            return props.currentUser.mealTimeList.filter(meal => meal.date === today );
+        } else {
+            return [];
+        }
+    }
 
     function initializeScreen() {
-        if (todaysMeals === []) {
+        if (todaysMeals.length == 0) {
             return <p>You have no meals assigned for today!</p>
         }
 
@@ -64,7 +69,7 @@ export default function DashMeal(props) {
         return (
             <div className='dashboard-meals'>
                 <button type='button' className='dash-meal-head' data-route='meals' onClick={props.viewChange}>
-                    <h2>Today's Meal Plan</h2>
+                    Today's Meal Plan
                 </button>
                 <p>Today's planned caloric intake: {calorieTotal} kcal</p>
                 <div>{initializeScreen()}</div>
@@ -74,7 +79,6 @@ export default function DashMeal(props) {
 
     function createButtonIfExists(meal, index) {
         if (meal) {
-            console.log(meal);
             let recipe = meal.recipe;
             if (meal.time.toLowerCase() === labels[index]) {
                 currentMeali++;
