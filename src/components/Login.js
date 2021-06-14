@@ -58,7 +58,7 @@ export default function Login(props) {
 
     return (
         <div id="login" className="screen">
-            <div className="card">
+            <div className="landing-card">
             <h1>Welcome back!</h1>
             <FormField type="text" id="login-username" label="Username" placeholder="johndoe" change={usernameChange} value={username} />
             <FormField type="password" id="login-password" label="Password" placeholder="password" change={passwordChange} value={password} />

@@ -84,11 +84,12 @@ export default function DashMeal(props) {
     function renderScreen() {
         return (
             <div className='dashboard-meals'>
-                <button type='button' className='dash-meal-head' data-route='meals' onClick={props.viewChange}>
-                    Today's Meal Plan
-                </button>
-                <p>Today's planned caloric intake: {calorieTotal} kcal</p>
+                <h3>Meal Plan</h3>
                 <div>{initializeScreen()}</div>
+                <p>Today's planned caloric intake: {calorieTotal} kcal</p>
+                <button type='button' className='dash-meal-head rectangle-button' data-route='meals' onClick={props.viewChange}>
+                    View today's Meal Plan
+                </button>
             </div>
         )
     }
