@@ -7,7 +7,6 @@ import Search from "./components/Search";
 import SearchSelect from "./components/SearchSelect";
 import Favorites from "./components/Favorites"
 import Settings from "./components/Settings";
-import Search from "./components/Search"
 import MealPlanNav from "./components/MealPlanNav";
 
 import { React, useState } from 'react';
