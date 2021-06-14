@@ -18,9 +18,9 @@ export default function DashQuery(props) {
 
     return (
         <div className="search-query">
-            <h2>Start searching for recipes today!</h2>
+            <h3>Start searching for recipes...</h3>
             {/* <FormField id='dash-search' label='Ingredients:' placeholder='ingredients' value={props.q} onChange={changeQuery} /> Not 100% sure with onChange and value yet */}
-            <button type='button' className='form-field form-button' data-route={'search'} onClick={props.viewChange}>Search</button>
+            <button type='button' className='form-field rectangle-button' data-route={'search'} onClick={props.viewChange}>Search</button>
         </div>
     )
 }

@@ -49,10 +49,12 @@ body {
   grid-template-columns: auto 1fr;
   grid-template-areas: 
     "nav nav"
-    "menu screen";
+    "screen screen";
+    font-family: 'Raleway', sans-serif;
 }
 
 #nav-bar {
+  position: relative;
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
@@ -113,7 +115,11 @@ body {
   padding-top: 0.5rem;
 }
 .card {
-  margin: 4rem;
+  margin: 2rem;
+}
+
+.col-md-4 {
+  padding: 0;
 }
 
 
@@ -126,6 +132,10 @@ body {
   box-shadow: none!important;
 }
 
+.card-body {
+  justify-content: space-evenly;
+}
+
 
 .card-body .btn {
   width: 50%;
@@ -133,6 +143,12 @@ body {
   margin-top: 1rem;
   margin-bottom: 1rem;
   background-color: #711e1d;
+}
+
+.recipe-image {
+  width: 60%;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 img {
@@ -204,10 +220,11 @@ input[type=checkbox]:checked:after {
 
 
 #favorite-button{
-  background-color: #711e1d;
+  background-color: var(--secondary, #711e1d);
   margin-left: 43%;
-  height: 5rem;
+  height: 4rem;
   margin-bottom: 2rem;
+  font-size: 1.5rem;
 }
 
 
@@ -219,18 +236,14 @@ input[type=checkbox]:checked:after {
 }
 
 #home-button {
-  margin-right: calc(50% - 50px);
-  margin-top: 1rem;
-}
-
-
-#logout-button {
-  margin-left: calc(25%);
   margin-top: 1rem;
 }
 
 #logout-button {
-  margin-left: 30%;
+  position: absolute;
+  right: 2rem;
+  margin-left: 55%;
+  margin-top: 1rem;
 }
 
 .screen {
@@ -257,28 +270,35 @@ input[type=checkbox]:checked:after {
 
 #home-login, #home-register, .rectangle-button, #home-search{
   width: 15rem;
-  height: 3rem;
+  height: 2rem;
   background-color: var(--primary, black);
   color: white;
-  font-size: 1.5rem;
-  font-family: inherit;
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
   margin-top: 1rem;
   border: none;
   cursor: pointer;
 }
 
 #menu {
+  margin-left: 1rem;
+  position: absolute;
+  top: 4rem;
+  left: 1rem;
+  width: 12rem;
   background-color: var(--primary, black);
-  height: 100%;
-  transition: width 1s;
+  transition: height 1s;
+  border-radius: 5px;
 }
 
+
 .expanded {
-  width: 15rem;
+  height: 30rem;
+  transition-delay: .1s;
 }
 
 .not-expanded {
-  width: 0;
+  height: 0;
 }
 
 .spinny {
@@ -383,8 +403,7 @@ input[type=checkbox]:checked:after {
 }
 
 #menu-items {
-  width: 15rem;
-  border-top: 2px solid white;
+  width: 12rem;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -393,7 +412,6 @@ input[type=checkbox]:checked:after {
 .menu-item {
   font-family: 'Caveat', sans-serif;
   font-size: 1.5rem;
-  border-bottom: 2px solid white;
   width: 100%;
   height: 5rem;
   color: white;
@@ -423,10 +441,13 @@ input[type=checkbox]:checked:after {
     padding: 0;
 }
 
-.card {
+.landing-card {
+    overflow: auto;
+    box-sizing: content-box;
     padding: 1rem;
-    width: 450px;
-    height: 450px;
+    width: 40vw;
+    min-width: 450px;
+    min-height: 75vh;
     background-color: rgba(247, 247, 247);
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
     display: flex;
@@ -450,12 +471,13 @@ input[type=checkbox]:checked:after {
 }
 
 #search-select > h2{
+  font-family: 'Raleway', sans-serif;
   margin-top: 5rem;
   text-align: center;
 }
 
 .form-field {
-  margin-top: 1rem;
+  margin-top: 2rem;
   
 }
 
@@ -463,20 +485,22 @@ input[type=checkbox]:checked:after {
   display: block;
   font-weight: bold;
   margin-bottom: .25rem;
+  font-family: 'Raleway', sans-serif;
 }
 
 .form-field input {
+  box-sizing: content-box;
   width: 15rem;
   height: 1.5rem;
-  padding: 0 .25rem;
+  padding: .1rem .25rem;
 }
 
 .form-button {
+  font-family: 'Raleway', sans-serif;
   border: 2px solid #cd322f;
   color: white;
   font-weight: bold;
   background-color: #cd322f;
-  font-family: inherit;
   font-size: 1rem;
   width: 15rem;
   height: 1.5rem;
@@ -508,11 +532,7 @@ input[type=checkbox]:checked:after {
   box-sizing: border-box;
   padding: 4rem;
   justify-content: space-between;
-  align-items: flex-start;
-}
-
-#delete-account {
-  align-self: center;
+  align-items: center;
 }
 
 .delete-overlay {
@@ -561,37 +581,78 @@ input[type=checkbox]:checked:after {
   margin: auto;
 }
 
-/* #dash-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#dash-container {
+  font-family: 'Raleway', sans-serif;
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: 5rem 10rem 1fr;
+  grid-template-columns: 45% 45%;
+  grid-template-areas:
+    "head head"
+    "search search"
+    "meal fav";
+    justify-items: center;
+    align-items: center;
+    grid-gap: 1rem;
 
-} */
+}
 
 #dash-head-block {
-  order: 0;
+  /* order: 0;
   flex-basis: 0;
-  /* flex-grow: 12; */
+  flex-grow: 12; */
+  grid-area: head;
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: none;
+}
+
+#dash-head-block > h2 {
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 #dash-search-block {
-  order: 1;
+  /* order: 1; */
+  grid-area: search;
+  justify-self: stretch;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.search-query {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;;
+}
+
+#dash-search-block h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #dash-double-block {
-  order: 2;
+  /* order: 2;
   display: flex;
-  flex-direction: row;
+  flex-direction: row; */
 }
 
 #dash-meal-block {
-  flex: 8;
-  order: 1;
+  /* flex: 8;
+  order: 1; */
+  grid-area: meal;
+  align-self: stretch;
+  justify-self: stretch;
 }
 
 #dash-fav-block {
-  flex: 4;
-  order: 2;
+  /* flex: 4;
+  order: 2; */
+  grid-area: fav;
+  align-self: stretch;
+  justify-self: stretch;
 }
 
 .dash-fav-button {
@@ -603,4 +664,33 @@ input[type=checkbox]:checked:after {
   display: flex;
   flex-direction: column;
   list-style-type: none;
+}
+
+.dash-component {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  background: rgb(253, 253, 253);
+}
+
+.dashboard-meals h3, .dashboard-favorites h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.dashboard-meals > button, .dashboard-favorites > button {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.record-block > p {
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.record-block > button {
+  margin-top: 0;
 }

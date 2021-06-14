@@ -17,7 +17,7 @@ function App() {
   // useState("home") returns ["home", function for updating state]
   // needs state to hold favorite recipes (probably an array of objects) and meal plan (probably an object of objects)
   const [screen, setScreen] = useState("register");
-  const [landing, setLanding] = useState(false);
+  const [landing, setLanding] = useState(true);
   const [spin, setSpin] = useState("no-spin");
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Dashboard", "Search", "Favorites", "Meal Plan", "Settings"]);

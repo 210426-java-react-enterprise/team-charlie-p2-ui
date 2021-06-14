@@ -91,7 +91,7 @@ export default function Register(props) {
                 
     return (
         <div id="register" className="screen">
-            <div className="card">
+            <div className="landing-card">
             <h1>Welcome to <span>Pantry.io</span></h1>
             <FormField type="text"  id="register-username" label="Username:" placeholder="johndoe" change={usernameChange} value={username} />
             <FormField type="password" id="register-password" label="Password:" placeholder="password" change={passwordChange} value={password} />

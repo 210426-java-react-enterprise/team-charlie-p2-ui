@@ -12,13 +12,13 @@ export default function SearchSelect(props) {
     for(let recipe of props.recipes){
         console.log(recipe);
         const row = (
-            <div key={`${props.recipes.indexOf(recipe)}`}className="col-sm-4">
+            <div key={`${props.recipes.indexOf(recipe)}`}className="col-md-4">
             <div className="card text-center">
                 <div className="card-header">
                     <h5 className="card-title"><strong>{recipe.label}</strong></h5>
                 </div>
                 <div className="card-body">
-                    <a href={recipe.url} data-ignore='true' target="_blank" rel="noreferrer"><img src={recipe.image} alt={recipe.url}/></a>
+                    <a href={recipe.url} data-ignore='true' target="_blank" rel="noreferrer"><img className="recipe-image" src={recipe.image} alt={recipe.url}/></a>
                     <p className="card-text"><strong>Calories:</strong> {recipe.calories}</p>
                     <p className="card-text"><strong>Servings:</strong>  {recipe.yield}</p>
                     <div className="row">    
@@ -61,7 +61,7 @@ export default function SearchSelect(props) {
                 {recipeRows}
             </div>
 
-            <button id="favorite-button" type="button" data-route='home' className="form-field form-button" onClick={props.handleFavorites}>Save Favorites</button> <br/>
+            <button id="favorite-button" type="button" data-route='dashboard' className="form-field rectangle-button" onClick={props.handleFavorites}>Save Favorites</button> <br/>
             {/* <h2>What would you like to favorite?</h2>
             <table id='recipe-table'>
                 <thead id='recipe-table-header'>

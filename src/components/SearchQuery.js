@@ -23,7 +23,7 @@ export default function SearchQuery(props) {
             <h2>Search for Recipes!</h2>
             <FormField id="search-ingredient" label="Ingredients" placeholder="ex: chicken and waffles" change={props.ingredientQ} value={props.q} />
             {props.errorPresent && !props.closed && <AlertBox setClosed={props.setClosed} errorMessage={props.errorMessage}/>}
-            <button type="button" className="form-field form-button" onMouseUp={initiateQChange} onClick={submitSearch}>Search</button>
+            <button type="button" className="form-field rectangle-button" onMouseUp={initiateQChange} onClick={submitSearch}>Search</button>
         </div>
     )
 }
