@@ -1,0 +1,93 @@
+
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+.mealPlanContainer{
+  margin-top: 3rem;
+}
+
+.mealPlanNav{
+  height: 1rem;
+  width: inherit;
+  margin-bottom: 10%;
+}
+
+.btnContainer{
+  height: 5rem;
+  
+  
+}
+.calendarContainer{
+  height: 5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.arrowLeftBtnstyles{
+  margin-left: 30%
+}
+.arrowRightBtnstyles{
+  margin-right: 30%;
+}
+
+.arrowImg{
+  height: 3rem;
+  width: 3rem;
+}
+
+.calendar{
+  margin: 1% 5% 5% 10%;
+}
+
+.calendarLbl{
+  font-size: 1.25rem;
+}
+
+.dayPlanDetails{
+  font-size: 1.5rem;
+  height: auto;
+  padding-top: 1%;
+  width: inherit;
+  margin: inherit;
+}
+
+.mealTime{
+  width: 90%;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+.mealTimeLbl{
+  margin-left: 30%;
+}
+
+.recipeSlct{
+  width: 90%;
+}
+
+.saveBtnContainer{
+  margin-top: 5%;
+}
+
+.addBtn{
+  width: 10rem;
+  margin-left: 30%;
+  margin-right: 2%;
+  background:#e16916;
+  border-color: #e16916;
+}
+
+.removeBtn{
+  margin-left: 25%;
+  width: 10rem;
+  background:#e16916;
+  border-color: #e16916;
+}
+
+.saveBtn{
+  width: 10rem;
+  margin-left: 10%;
+  background:#e16916;
+  border-color: #e16916;
+}
