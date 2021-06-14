@@ -148,16 +148,17 @@ export default function MealPlanNav(props){
 
     return(
         <>
-        <Container fluid className={styles.mealPlanContainer}>
+        <Container fluid className={styles.mealPlanContainer} id="meal-plan-container">
             <Row className={styles.mealPlanNav}>
                 <Col  md={4} className={styles.btnContainer}>
-              
+
                 </Col>
                 <Col sm={8} md={4} className={styles.calendarContainer} style={{textAlign:`center`}}>
-                    <div className={styles.dayPlanDetails} >
+                    <div id="meal-calendar-format" className={styles.dayPlanDetails} >
                         <label htmlFor="dayPlan">Pick your day!!!</label>
                     </div>
                     <input type="date" data-date="" data-date-format="YYYY-MM-DD" id="calendar" name="dayPlan" min={minDate} max={maxDate} onChange={changeDate} />
+
                 </Col>
                 <Col md={4} className={styles.btnContainer}>
                    
