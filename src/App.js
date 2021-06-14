@@ -64,7 +64,7 @@ function App() {
       {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
-      {screen === "plan" && <MealPlanNav viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}
+      {screen === "meal plan" && <MealPlanNav viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}
     </div>
   );
 }
