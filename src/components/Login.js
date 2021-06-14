@@ -17,7 +17,7 @@ export default function Login(props) {
         //this resets the closed state so if they close the box and try again, the AlertBox will reappear
         setClosed(false);
 
-        let authResp = await fetch('http://localhost:5000/auth', {
+        let authResp = await fetch('http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/auth', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -35,7 +35,7 @@ export default function MealPlanNav(props){
     }
 
     async function savePlan(){
-        let saveResp = await fetch('http://localhost:5000/save/plan')
+        let saveResp = await fetch('http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/save/plan')
         
     }
 
