@@ -1,13 +1,14 @@
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-
+import Favorites from "./components/Favorites"
 import Menu from "./components/Menu";
 import Settings from "./components/Settings";
 import Search from "./components/Search"
 import MealPlan from "./components/MealPlan";
 
 import { React, useState } from 'react';
+import AlertBox from "./components/AlertBox";
 import logo from './resources/logo.svg';
 
 function App() {
@@ -18,10 +19,10 @@ function App() {
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search"]);
-  const [favorites, setFavorites] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
-
   const [currentToken, setCurrentToken] = useState("");
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+
 
   const viewChange = (e) => {
     const newScreen = e.target.getAttribute("data-route");
@@ -34,7 +35,7 @@ function App() {
 
 
   const resetState = () => {
-    setFavorites([]);
+    setCurrentUser({});
     setCurrentToken("");
   }
 
@@ -62,10 +63,11 @@ function App() {
         <button type="button" id="logout-button" className="icon-button" data-route='home' onClick={logout}><h1>Logout</h1></button>
       </nav>
       {screen === "home" && <Home viewChange={viewChange} />}
-      {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage}/>}
-      {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} />}
+      {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} setHomepage={setHomepage} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
+      {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser}/>}
+      {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
-      {screen === "search" && <Search viewChange={viewChange} setFavorites={setFavorites} favorites={favorites} currentToken={currentToken}/>}
+      {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
       {screen === "plan" && <MealPlan viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}
     </div>
   );

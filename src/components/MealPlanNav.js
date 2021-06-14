@@ -36,6 +36,7 @@ export default function MealPlanNav(props){
 
     async function savePlan(){
         let saveResp = await fetch('http://localhost:5000/save/plan')
+        
     }
 
 
@@ -43,6 +44,8 @@ export default function MealPlanNav(props){
     //let defaultDate = new Date().format('Y-m-d');
     let minDate = "2021-06-01";
     let maxDate = "2050-12-31";
+    let today = new Date().toISOString().slice(0, 10)
+    console.log(today);
 
     return(
         <>
@@ -57,11 +60,11 @@ export default function MealPlanNav(props){
                     <div class="dayPlanDetails" style={{fontSize:`${1.25}rem`}}>
                         <label for="dayPlan">Pick your day!!!</label>
                     </div>
-                    <input type="date" data-date="" data-date-format="YYYY-MM-DD" id="calendar" name="dayPlan" value={date} min={minDate} max={maxDate} onChange={changeDate} />
+                    <input type="date" data-date="" data-date-format="YYYY-MM-DD" id="calendar" name="dayPlan" value={today} min={minDate} max={maxDate} onChange={changeDate} />
                 </Col>
                 <Col md={4} class="btnContainer">
                     <div class="arrowRightBtnstyles arrow" style={{ marginTop: `${1}rem` }}>
-                        <img class="arrowImg" src={rightArrow} alt="rightArrow" style={{marginLeft:`${20}%`}} onClick={nextDay}/>
+                        <img class="arrowImg" src={rightArrow} alt="rightArrow" style={{marginLeft:`${15}%`}} onClick={nextDay}/>
                     </div>    
                 </Col> 
             </Row>

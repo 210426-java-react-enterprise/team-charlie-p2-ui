@@ -12,6 +12,17 @@ export default function MealPlanDay(props){
     const[mealTimeRows, setMealTimeRows] = useState([])
     const[count, setCount] = useState(0);
     const[errorMessage, setErrorMessage]= useState({});
+    const[mealPLan, setMelPlan] = useState({
+        userId: "",
+        dayPlanList:[{
+            id:"",
+            label:"",
+            calories:"",
+            yield:"",
+            url:"",
+            image:""
+        }]
+        });
     
     // props.setCurrentUser(async function handleSearch(){
     //     console.log("Searching for recipes...");
@@ -41,30 +52,39 @@ export default function MealPlanDay(props){
                 
     //         }
     //     })    
-        
+    
+    //<option value={optionValue}>Meal Time # {count}</option>
 
 
     function addMealTime(){
         const recipeSelectName = "recipeSelect"
         let recipeSelectId = recipeSelectName.concat(count);
-        const optionValueName = "RecipeFav";
-        let optionValue = optionValueName.concat(count);
-        // if(count < 0){
-        //     let dif= 0 - count;
-        //     setCount(count => count + dif);
-        // }
-
-        //<option value={optionValue}>{props.mealPlan.favorites[count].label}</option>
-
+        let mealTimeLbl;
+        console.log(count);
+        switch (count) {
+            case 0:
+                mealTimeLbl = "Breakfast";
+                break;
+            case 1:
+                mealTimeLbl = "Lunch";
+                break;
+            case 2:
+                mealTimeLbl = "Dinner";
+                break;               
+            default:
+                mealTimeLbl = "Snack";
+                break;
+        }
+        
         const row =(
             <Row key={count} class="mealTime">
             <Col>
-                <label class="mealTimeLbl" for={recipeSelectId}>Meal Time # {count}</label>
+                <label class="mealTimeLbl" for={recipeSelectId}>{mealTimeLbl}</label>
             </Col> 
             <Col>
                 <select class="recipeSlct" name="recipe" id={recipeSelectId}>
                     <option value="">--Please choose and option</option>
-                    <option value={optionValue}>Meal Time # {count}</option>
+                    {props.currentUser.favorites.map((elem, index) =>  <option key ={index} value={elem.id} >{elem.label}</option>)}
                 </select>
             </Col> 
         </Row>
@@ -74,7 +94,6 @@ export default function MealPlanDay(props){
         setMealTimeRows(mealTimeRows => [...mealTimeRows, row])
     }
 
-    
 
     function removeMealTime(){
             setCount(() => count - 1); 
@@ -82,6 +101,13 @@ export default function MealPlanDay(props){
             setMealTimeRows(newMealTimeRow);
             console.log(count);
     }
+
+    // function handleOtionChange(e){
+    //     setCurrentUser(
+
+    //     )
+    //     e.currentTarget.value
+    // }
     
     return(
         <>

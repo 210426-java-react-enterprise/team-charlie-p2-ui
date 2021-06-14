@@ -9,7 +9,7 @@ export default function MealPlan(props){
 
     return(
         <>
-            <MealPlanNav setCurrentUser={props.setCurrentUser} setCurrentUser={props.setCurrentUser} />         
+            <MealPlanNav setCurrentUser={props.setCurrentUser} currentUser={props.currentUser} />         
         </>
     )
 
