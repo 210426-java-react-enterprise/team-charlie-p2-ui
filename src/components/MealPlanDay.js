@@ -47,8 +47,8 @@ export default function MealPlanDay(props){
             </Col> 
             <Col>
                 <select className={styles.recipeSlct} name="recipe" id={recipeSelectId} data-label={mealTimeLbl} ref={props.testRef}  onChange={props.handleOtionChange}>
-                    <option value="">--Please choose and option</option>
-                    {props.currentUser.favorites.map((elem, index) =>  <option key={index} value={index}>{elem.label}</option>)}
+                    <option value="">--Please choose an option</option>
+                    {props.currentUser.favorites && props.currentUser.favorites.length > 0 && props.currentUser.favorites.map((elem, index) =>  <option key={index} value={index}>{elem.label}</option>)}
                 </select>
             </Col> 
         </Row>
@@ -78,13 +78,13 @@ export default function MealPlanDay(props){
                         mealTimeRows
                     }
                 </div>
-                <Row className={styles.saveBtnContainer}>
+                <Row className={styles.saveBtnContainer} id="meal-plan-buttons">
                     <Col>
-                        <Button id="add-time-button" variant={styles.light} className= {styles.addBtn} onClick={() => addMealTime()} >Add Time</Button>
+                        <Button id="add-time-button" variant={styles.light} className="form-button" onClick={() => addMealTime()} >Add Time</Button>
                     </Col>
 
                     <Col>
-                        <Button id="save-button" variant={styles.light} className= {styles.saveBtn} onClick={props.saveMealTime}>Save</Button>
+                        <Button id="save-button" variant={styles.light} className="form-button" onClick={props.saveMealTime}>Save</Button>
                     </Col>
                 </Row>
             </div>

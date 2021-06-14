@@ -716,3 +716,60 @@ input[type=checkbox]:checked:after {
 .record-block > button {
   margin-top: 0;
 }
+
+#meal-plan-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#meal-plan-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#meal-plan-buttons > div {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-time-button, #save-button {
+  margin: 0 !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+}
+
+#add-time-button:hover, #save-button:hover {
+  background-color: var(--secondary, red);
+}
+
+#meal-row-format {
+  width: 100%;
+  margin: 0;
+  margin-right: 0 !important;
+  padding: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+
+#meal-row-format > div {
+  margin: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+}
