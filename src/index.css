@@ -136,6 +136,21 @@ body {
   justify-content: space-evenly;
 }
 
+#meal-row-format{
+  margin-left: 25rem; 
+  margin-bottom: 2rem;
+  width: 80%;
+} 
+ #add-time-button{
+  margin-left: 35rem; 
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+} 
+  #save-button{
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}  
+
 
 .card-body .btn {
   width: 50%;
