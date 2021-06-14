@@ -13,7 +13,7 @@ export default function DashFavs(props) {
      */
     function initializeScreen() {
         // Before anything else, checks if props.favorites is empty and returns a null response
-        if (props.currentUser.favorites && props.currentUser.favorites.length > 0) {
+        if (!props.currentUser.favorites || props.currentUser.favorites.length === 0) {
             // return <p>You have no favorites yet!</p>
             return [];
         } else {
