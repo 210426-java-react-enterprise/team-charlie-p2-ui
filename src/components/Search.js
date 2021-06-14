@@ -5,8 +5,8 @@ import SearchSelect from "./SearchSelect";
 // import {saveAllRecipes} from "../remote/favorite-service";
 
 export default function Search(props){
+    const [ingredient, setIngredient] = useState("");
     const [q, setQ] = useState("");
-    
     const [recipes, setRecipes] = useState([]);
     const [searchPage, setSearchPage] = useState('search-query');
     const [favorites, setFavorites] = useState([]);

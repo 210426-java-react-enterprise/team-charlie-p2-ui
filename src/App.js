@@ -1,12 +1,13 @@
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Menu from "./components/Menu"
+import Dashboard from "./components/Dashboard";
+import Search from "./components/Search";
+import SearchSelect from "./components/SearchSelect";
 import Favorites from "./components/Favorites"
-import Menu from "./components/Menu";
 import Settings from "./components/Settings";
-import Search from "./components/Search"
 import MealPlan from "./components/MealPlan";
-
 import { React, useState } from 'react';
 import AlertBox from "./components/AlertBox";
 import logo from './resources/logo.svg';
@@ -18,6 +19,7 @@ function App() {
   const [screen, setScreen] = useState("home");
   const [homepage, setHomepage] = useState("home");
   const [menu, setMenu] = useState(false);
+  const [currentUsername, setCurrentUsername] = useState("");
   const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search", "Favorite"]);
   const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
@@ -60,9 +62,10 @@ function App() {
       <nav id="nav-bar">
         <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className="fas fa-bread-slice"></i></button>
         <button type="button" id="home-button" className="icon-button" data-route={homepage} onClick={viewChange}><h1>Pantry.io</h1></button>
-        <button type="button" id="logout-button" className="icon-button" data-route='home' onClick={logout}><h1>Logout</h1></button>
       </nav>
-      {screen === "home" && <Home viewChange={viewChange} />}
+      {screen === "home" && <Home viewChange={viewChange} setCurrentUser={setCurrentUser} />}
+      {screen === "dashboard" && <Dashboard viewChange={viewChange} setMenuOptions={setMenuOptions} setCurrentUser={setCurrentUser} currentToken={currentToken} currentUser={currentUser} setQ={setQ} q={q} />}
+      {screen === "search-select" && <SearchSelect viewChange={viewChange} setCurrentUser={setCurrentUser} currentToken={currentToken} q={q} />}
       {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} setHomepage={setHomepage} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
       {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser}/>}
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
