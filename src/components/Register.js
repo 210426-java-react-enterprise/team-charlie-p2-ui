@@ -29,7 +29,7 @@ export default function Register(props) {
         //this resets the closed state so if they close the box and try again, the AlertBox will reappear
         setClosed(false);
 
-        let res = await fetch('http://localhost:5000/user/register', {
+        let res = await fetch('http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export default function Register(props) {
         } else{
             console.log(res.status);
 
-            let authResp = await fetch('http://localhost:5000/auth', {
+            let authResp = await fetch('http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/auth', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -76,8 +76,7 @@ export default function Register(props) {
                 
 
                 //Should set homepage to dashboard 
-                props.setHomepage('home');
-                props.setMenuOptions(['Search', 'Favorites', 'Meal Plan', 'Settings'])
+                props.setLanding(false);
                 props.viewChange(e);
             }
             else{
@@ -92,14 +91,16 @@ export default function Register(props) {
                 
     return (
         <div id="register" className="screen">
-            <h2>Let's get you cooking!</h2>
-            <FormField id="register-username" label="Username:" placeholder="johndoe" change={usernameChange} value={username} />
-            <FormField id="register-password" label="Password:" placeholder="password" change={passwordChange} value={password} />
+            <div className="card">
+            <h1>Welcome to <span>Pantry.io</span></h1>
+            <FormField type="text"  id="register-username" label="Username:" placeholder="johndoe" change={usernameChange} value={username} />
+            <FormField type="password" id="register-password" label="Password:" placeholder="password" change={passwordChange} value={password} />
             <FormField id="register-email" label="Email:" placeholder="johndoe@website.com" change={emailChange} value={email} />
             {errorPresent && !closed && <AlertBox setClosed={setClosed} errorMessage={errorMessage} />}
             {/* should change data-route to dashboard later */}
-            <button type="button" data-route='home' className="form-field form-button" onClick={handleRegister}>Register</button>
+            <button type="button" data-route='dashboard' className="form-field form-button" onClick={handleRegister}>Register</button>
             <a href="#" className="form-field" onClick={props.viewChange} data-route="login">Already have an account? Login here.</a>
+            </div>
         </div>
     )
 }

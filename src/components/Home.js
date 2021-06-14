@@ -12,6 +12,7 @@ export default function Home(props) {
             <button type="button" id="home-login" data-route="login" onClick={props.viewChange}>Login</button>
             <button type="button" id="home-register" data-route="register" onClick={props.viewChange}>Register</button>
             <button type="button" id="home-search" data-route="search" onClick={props.viewChange}>Search</button>
+            <button type="button" id="home-dash" data-route="dashboard" onClick={props.viewChange}>Dashboard</button>
             {errorPresent && !closed && <AlertBox setClosed={setClosed}/>}
         </div>
     )
