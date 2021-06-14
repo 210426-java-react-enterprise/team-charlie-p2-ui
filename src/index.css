@@ -289,30 +289,6 @@ input[type=checkbox]:checked:after {
   background-color: var(--primary, black);
   transition: height 1s;
   border-radius: 5px;
-  z-index: 100;
-}
-
-#meal-row-format{
-  margin-left: 25rem; 
-  margin-bottom: 2rem;
-  width: 80%;
-} 
- #add-time-button{
-  margin-left: 35rem; 
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-} 
-  #save-button{
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-}  
-
-#meal-plan-div{
-  background-color: var(--secondary, #711e1d);
-  margin-left: 20rem;
-  height: 4rem;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
   z-index: 1000;
   overflow: hidden;
 }
