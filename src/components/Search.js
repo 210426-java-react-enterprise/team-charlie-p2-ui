@@ -57,7 +57,7 @@ export default function Search(props){
             console.log(res.status);
             let json = await res.json();
 
-            props.setCurrentUser(json);
+            // props.setCurrentUser(json);
 
             // console.log(json);
             setRecipes(json);
