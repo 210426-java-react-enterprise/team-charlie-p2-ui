@@ -108,7 +108,7 @@ export default function Favorites(props) {
         (props.favoriteRecipes.length === 0) ? 
         <h2>You have no favorites yet!</h2>
         :
-        <div id="favorite-recipe" className="favorite-recipe-div">
+        <div className="row">
             {props.favoriteRecipes.map((recipe, index) => (
                 <Favorite
                     key={index}
@@ -121,7 +121,8 @@ export default function Favorites(props) {
                     prepared={recipe.prepared}
                     handleRemoval={ () => (
                         handleRemoval(recipe.id))}
-                    handleUpdate={() => (handleUpdate((recipe.prepared + 1), recipe.id)
+                    handleUpdate={ () => (
+                        handleUpdate((recipe.prepared + 1), recipe.id)
                     )} />))}
 
         </div>
