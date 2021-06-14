@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 
 export default function Favorite(props) {
  /* <h2>Name: {props.label}</h2> */
-    return(
-        
+    return(   
         <div id={props.id} className="col-sm-4">
           <div className="card text-center">
               <div className="card-header">
@@ -24,8 +23,6 @@ export default function Favorite(props) {
                   </div>
               </div>
           </div>
-            
-
         </div>
     );
 }
