@@ -27,7 +27,7 @@ export default function MealPlanDay(props){
     // props.setCurrentUser(async function handleSearch(){
     //     console.log("Searching for recipes...");
 
-    //     let res = await fetch(`http://localhost:5000/recipe/id/${count}`, {
+    //     let res = await fetch(`http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/recipe/id/${count}`, {
     //         method: 'GET',
     //         headers: {
     //             'Content-Type': 'application/json',

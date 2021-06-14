@@ -14,7 +14,7 @@ export default function Favorites(props) {
     async function getFavorites() {
         console.log("Getting favorite recipes...");
         
-        let response = await fetch('http://localhost:5000/user/favorite', {
+        let response = await fetch('http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/user/favorite', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export default function Favorites(props) {
     async function handleRemoval(recipeId) {
         console.log("Removing the recipe...");
 
-        let response = await fetch(`http://localhost:5000/user/favorite/${recipeId}`, {
+        let response = await fetch(`http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/user/favorite/${recipeId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export default function Favorites(props) {
     }
 
     async function handleUpdate(amount, recipeId) {
-        let response = await fetch(`http://localhost:5000/user/favorite`, {
+        let response = await fetch(`http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/user/favorite`, {
             method: 'PATCH',
             headers: {
                 'Content-Type' : 'application/json',

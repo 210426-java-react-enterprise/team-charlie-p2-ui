@@ -24,7 +24,7 @@ export default function Settings(props) {
     }
 
     const handleDelete = async () => {
-        let res = await fetch('http://localhost:5000/user/account', {
+        let res = await fetch('http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/user/account', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

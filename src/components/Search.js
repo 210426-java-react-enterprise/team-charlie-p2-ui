@@ -5,7 +5,6 @@ import SearchSelect from "./SearchSelect";
 // import {saveAllRecipes} from "../remote/favorite-service";
 
 export default function Search(props){
-    const [ingredient, setIngredient] = useState("");
     const [q, setQ] = useState("");
     const [recipes, setRecipes] = useState([]);
     const [searchPage, setSearchPage] = useState('search-query');
@@ -41,7 +40,7 @@ export default function Search(props){
         qChange();
 
 
-        let res = await fetch(`http://localhost:5000/recipe/search?q=${query}`, {
+        let res = await fetch(`http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/recipe/search?q=${query}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,7 +86,7 @@ export default function Search(props){
     }
 
     async function saveFavorites(fav){
-        let saveResp = await fetch('http://localhost:5000/user/favorites', {
+        let saveResp = await fetch('http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/user/favorites', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
