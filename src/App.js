@@ -41,6 +41,9 @@ function App() {
     setLanding(true);
     setCurrentUser({});
     setCurrentToken("");
+    setSpin("no-spin");
+    setMenu(false);
+
     if (e != undefined) {
       viewChange(e);
     } else {
@@ -52,7 +55,7 @@ function App() {
 
   return (
     <div id="app">
-      <Menu menuOptions={menuOptions} viewChange={viewChange} menu={menu} />
+      {!landing && <Menu menuOptions={menuOptions} viewChange={viewChange} menu={menu} />}
       {!landing && <nav id="nav-bar">
         <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className={`fas fa-bread-slice ${spin}`}></i></button>
         <button type="button" id="home-button" className="icon-button" data-route="dashboard" onClick={viewChange}><h1>Pantry.io</h1></button>
