@@ -93,8 +93,8 @@ export default function Register(props) {
         <div id="register" className="screen">
             <div className="card">
             <h1>Welcome to <span>Pantry.io</span></h1>
-            <FormField id="register-username" label="Username:" placeholder="johndoe" change={usernameChange} value={username} />
-            <FormField id="register-password" label="Password:" placeholder="password" change={passwordChange} value={password} />
+            <FormField type="text"  id="register-username" label="Username:" placeholder="johndoe" change={usernameChange} value={username} />
+            <FormField type="password" id="register-password" label="Password:" placeholder="password" change={passwordChange} value={password} />
             <FormField id="register-email" label="Email:" placeholder="johndoe@website.com" change={emailChange} value={email} />
             {errorPresent && !closed && <AlertBox setClosed={setClosed} errorMessage={errorMessage} />}
             {/* should change data-route to dashboard later */}

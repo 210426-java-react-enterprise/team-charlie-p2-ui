@@ -16,7 +16,7 @@ function App() {
 
   // useState("home") returns ["home", function for updating state]
   // needs state to hold favorite recipes (probably an array of objects) and meal plan (probably an object of objects)
-  const [screen, setScreen] = useState("settings");
+  const [screen, setScreen] = useState("register");
   const [landing, setLanding] = useState(false);
   const [spin, setSpin] = useState("no-spin");
   const [menu, setMenu] = useState(false);
@@ -56,10 +56,10 @@ function App() {
         <button type="button" id="home-button" className="icon-button" data-route="dashboard" onClick={viewChange}><h1>Pantry.io</h1></button>
         <button type="button" id="logout-button" className="icon-button" data-route="login" onClick={reset}><h1>Logout</h1></button>
       </nav>}
-      {screen === "login" && <Login setLanding={setLanding} viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} />}
-      {screen === "register" && <Register setLanding={setLanding} viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} />}
-      {screen === "dashboard" && <Dashboard viewChange={viewChange} setMenuOptions={setMenuOptions} setCurrentUser={setCurrentUser} currentToken={currentToken} currentUser={currentUser} setQ={setQ} q={q} />}
-      {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} setHomepage={setHomepage} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
+      {screen === "login" && <Login setLanding={setLanding} viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setCurrentUser={setCurrentUser}/>}
+      {screen === "register" && <Register setLanding={setLanding} viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setCurrentUser={setCurrentUser}/>}
+      {screen === "dashboard" && <Dashboard viewChange={viewChange} setMenuOptions={setMenuOptions} setCurrentUser={setCurrentUser} currentToken={currentToken} currentUser={currentUser} />}
+      {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
       {screen === "plan" && <MealPlan viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}

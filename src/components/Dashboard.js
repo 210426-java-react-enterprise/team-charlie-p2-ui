@@ -11,7 +11,7 @@ export default function Dashboard(props) {
                 <h1 id='dash-h1'>Welcome {props.currentUser.username} to your Dashboard!</h1>
             </div>
             <div className='dash-component' id='dash-search-block'>
-                <DashQuery q={props.q} setQ={props.setQ} viewChange={props.viewChange} setCurrentUser={props.setCurrentUser} currentUser={props.currentUser} />
+                <DashQuery viewChange={props.viewChange} setCurrentUser={props.setCurrentUser} currentUser={props.currentUser} />
             </div>
             <div className='dash-component' id='dash-double-block'>
                 <div className='dash-sub-component' id='dash-meal-block'>
