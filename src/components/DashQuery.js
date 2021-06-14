@@ -1,7 +1,7 @@
 import {React, useState} from 'react';
 import FormField from './FormField';
 
-export default function(props) {
+export default function DashQuery(props) {
 
     const changeQuery = (e) => {
         props.setQ(e.target.value);
