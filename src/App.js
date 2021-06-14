@@ -5,7 +5,7 @@ import Favorites from "./components/Favorites"
 import Menu from "./components/Menu";
 import Settings from "./components/Settings";
 import Search from "./components/Search"
-import MealPlan from "./components/MealPlan";
+import MealPlanNav from "./components/MealPlanNav";
 
 import { React, useState } from 'react';
 import AlertBox from "./components/AlertBox";
@@ -53,6 +53,7 @@ function App() {
     setCurrentToken("");
   }
 
+  console.log(currentUser);
 
   return (
     <div id="app">
@@ -68,7 +69,7 @@ function App() {
       {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
-      {screen === "plan" && <MealPlan viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}
+      {screen === "plan" && <MealPlanNav viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}
     </div>
   );
 }

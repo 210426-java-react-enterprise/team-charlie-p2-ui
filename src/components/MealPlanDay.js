@@ -1,67 +1,29 @@
 import {React, useState} from 'react';
-import './css/plan.css';
+import styles from './css/plan.module.css';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button  from 'react-bootstrap/Button';
-import MealPlan from './MealPlan';
 
 export default function MealPlanDay(props){
 
     const[mealTimeRows, setMealTimeRows] = useState([])
-    const[count, setCount] = useState(0);
-    const[errorMessage, setErrorMessage]= useState({});
-    const[mealPLan, setMelPlan] = useState({
-        userId: "",
-        dayPlanList:[{
-            id:"",
-            label:"",
-            calories:"",
-            yield:"",
-            url:"",
-            image:""
-        }]
-        });
+    const [errorPresent, setErrorPresent] = useState(false);
+    const [errorMessage, setErrorMessage] = useState({});
     
-    // props.setCurrentUser(async function handleSearch(){
-    //     console.log("Searching for recipes...");
-
-    //     let res = await fetch(`http://localhost:5000/recipe/id/${count}`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': props.currentToken
-    //         }
-    //     })
-        
-    //         if(res.status != 200){
-    //             let err = await res.json();
-    //             setErrorMessage(err);
-    //             setErrorPresent(true);
-    
-    //         }else{
-    //             console.log(res.status);
-    //             let json = await res.json();
-    
-    //             props.setCurrentUser(json);
-    
-    //             // console.log(json);
-    //             setRecipes(json);
-    //             setSearchPage('search-select');
-                
-    //         }
-    //     })    
-    
-    //<option value={optionValue}>Meal Time # {count}</option>
+    console.log(props.currentUser);
 
 
     function addMealTime(){
+        console.log("addMealTime was invoked!!!")
+        console.log(props.count);
+
         const recipeSelectName = "recipeSelect"
-        let recipeSelectId = recipeSelectName.concat(count);
+        let recipeSelectId = recipeSelectName.concat(props.count);
         let mealTimeLbl;
-        console.log(count);
-        switch (count) {
+       
+        switch (props.count) {
             case 0:
                 mealTimeLbl = "Breakfast";
                 break;
@@ -76,54 +38,51 @@ export default function MealPlanDay(props){
                 break;
         }
         
+    
         const row =(
-            <Row key={count} class="mealTime">
+        
+            <Row key={props.count} className={styles.mealTime}>
             <Col>
-                <label class="mealTimeLbl" for={recipeSelectId}>{mealTimeLbl}</label>
+                <label className={styles.mealTimeLbl} htmlFor={recipeSelectId}>{mealTimeLbl}</label>
             </Col> 
             <Col>
-                <select class="recipeSlct" name="recipe" id={recipeSelectId}>
+                <select className={styles.recipeSlct} name="recipe" id={recipeSelectId} ref={props.testRef}  onChange={props.handleOtionChange()}>
                     <option value="">--Please choose and option</option>
-                    {props.currentUser.favorites.map((elem, index) =>  <option key ={index} value={elem.id} >{elem.label}</option>)}
+                    {props.currentUser.favorites.map((elem, index) =>  <option key ={index} value={elem.id}>{elem.label}</option>)}
                 </select>
             </Col> 
         </Row>
         )
-        setCount(count => count + 1);
-        console.log(count);
+        //setCount(count => count + 1);
+        //props.setCount(props.count => count + 1);
+        console.log(props.count);
+        props.setCount(props.count + 1)
+        console.log(props.count);
+
         setMealTimeRows(mealTimeRows => [...mealTimeRows, row])
     }
 
 
     function removeMealTime(){
-            setCount(() => count - 1); 
-            const newMealTimeRow = mealTimeRows.filter(Row => Row.key != count);
+            props.setCount(() => props.count - 1); 
+            const newMealTimeRow = mealTimeRows.filter(Row => Row.key != props.count);
             setMealTimeRows(newMealTimeRow);
-            console.log(count);
+            console.log(props.count);
     }
 
-    // function handleOtionChange(e){
-    //     setCurrentUser(
-
-    //     )
-    //     e.currentTarget.value
-    // }
-    
     return(
         <>
-            <div class="dayPlanDetails">
+            <div className={styles.dayPlanDetails}>
                 {   
                     mealTimeRows
                 }
-                <Row class="saveBtnContainer" style={{ marginTop:`${2}%` }}>
+                <Row className={styles.saveBtnContainer}>
                     <Col>
-                        <Button variant="light" onClick={() => addMealTime()} style={{ marginLeft: `${50}%`}}>Add Meal Time</Button>
+                        <Button variant={styles.light} className= {styles.addBtn} onClick={() => addMealTime()} >Add Time</Button>
                     </Col>
+                  
                     <Col>
-                        <Button className= "btn" variant="light" onClick={() => removeMealTime()} style={{ marginLeft: `${20}%`}}>Remove Meal Time</Button>
-                    </Col>
-                    <Col>
-                        <Button className= "btn" variant="light">Save</Button>
+                        <Button variant={styles.light} className= {styles.saveBtn} onClick={props.saveMealTime}>Save</Button>
                     </Col>
                 </Row>
             </div>
