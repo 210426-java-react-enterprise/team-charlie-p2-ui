@@ -49,7 +49,7 @@ body {
   grid-template-columns: auto 1fr;
   grid-template-areas: 
     "nav nav"
-    "menu screen";
+    "screen screen";
     font-family: 'Raleway', sans-serif;
 }
 
@@ -281,17 +281,24 @@ input[type=checkbox]:checked:after {
 }
 
 #menu {
+  margin-left: 1rem;
+  position: absolute;
+  top: 4rem;
+  left: 1rem;
+  width: 12rem;
   background-color: var(--primary, black);
-  height: 100%;
-  transition: width 1s;
+  transition: height 1s;
+  border-radius: 5px;
 }
 
+
 .expanded {
-  width: 15rem;
+  height: 30rem;
+  transition-delay: .1s;
 }
 
 .not-expanded {
-  width: 0;
+  height: 0;
 }
 
 .spinny {
@@ -396,8 +403,7 @@ input[type=checkbox]:checked:after {
 }
 
 #menu-items {
-  width: 15rem;
-  border-top: 2px solid white;
+  width: 12rem;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -406,7 +412,6 @@ input[type=checkbox]:checked:after {
 .menu-item {
   font-family: 'Caveat', sans-serif;
   font-size: 1.5rem;
-  border-bottom: 2px solid white;
   width: 100%;
   height: 5rem;
   color: white;
@@ -527,11 +532,7 @@ input[type=checkbox]:checked:after {
   box-sizing: border-box;
   padding: 4rem;
   justify-content: space-between;
-  align-items: flex-start;
-}
-
-#delete-account {
-  align-self: center;
+  align-items: center;
 }
 
 .delete-overlay {
@@ -590,7 +591,7 @@ input[type=checkbox]:checked:after {
     "head head"
     "search search"
     "meal fav";
-    justify-items: start;
+    justify-items: center;
     align-items: center;
     grid-gap: 1rem;
 
@@ -614,6 +615,17 @@ input[type=checkbox]:checked:after {
 #dash-search-block {
   /* order: 1; */
   grid-area: search;
+  justify-self: stretch;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.search-query {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;;
 }
 
 #dash-search-block h3 {
@@ -672,4 +684,13 @@ input[type=checkbox]:checked:after {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
+}
+
+.record-block > p {
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.record-block > button {
+  margin-top: 0;
 }
