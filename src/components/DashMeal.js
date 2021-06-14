@@ -9,10 +9,14 @@ import CheckButton from './CheckButton';
  */
 export default function DashMeal(props) {
 
+
     const today = getTodaysDate();
     const todaysMeals = setTodaysMeals();
     const labels = ['breakfast', 'lunch', 'dinner', 'snack'];
     const calorieTotal = calcCalories();
+
+    // const [mealList, setMealList] = useState([]);
+    // const [meals, setMeals] = useState([]);
     
 
 
@@ -65,6 +69,18 @@ export default function DashMeal(props) {
         return blockList;
     }
 
+    // function saveToDB() {
+    //     let checked = document.getElementsByClassName('');;
+    //     var i;
+    //     for(i = 0; i<checked.length; i++){
+    //         if(checked[i].checked){
+    //             addFavorite(recipes[i]);
+    //         }
+    //     }
+    // }
+
+    // <button type='button' onClick={() => saveToDB()}>Save</button>
+
     function renderScreen() {
         return (
             <div className='dashboard-meals'>
@@ -83,7 +99,7 @@ export default function DashMeal(props) {
             if (meal.time.toLowerCase() === labels[index]) {
                 currentMeali++;
                 return (
-                    <CheckButton id={`meal${meal.time}`} label={labelMaker(recipe)} onClick={() => (update(meal, !meal.eaten))} />
+                    <CheckButton className='meal-check-button' id={`meal${meal.time}`} isChecked={meal.eaten} label={labelMaker(recipe)} onClick={() => (update(meal, !meal.eaten))} />
                 )
             } else {
                 return (
