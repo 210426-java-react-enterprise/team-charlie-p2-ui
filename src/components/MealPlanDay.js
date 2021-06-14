@@ -73,18 +73,16 @@ export default function MealPlanDay(props){
     return(
         <>
             <div className={styles.dayPlanDetails}>
-                <div id="meal-row-format">
-                    {   
-                        mealTimeRows
-                    }
-                </div>
+                {   
+                    mealTimeRows
+                }
                 <Row className={styles.saveBtnContainer}>
                     <Col>
-                        <Button id="add-time-button" variant={styles.light} className= {styles.addBtn} onClick={() => addMealTime()} >Add Time</Button>
+                        <Button variant={styles.light} className= {styles.addBtn} onClick={() => addMealTime()} >Add Time</Button>
                     </Col>
                   
                     <Col>
-                        <Button id="save-button" variant={styles.light} className= {styles.saveBtn} onClick={props.saveMealTime}>Save</Button>
+                        <Button variant={styles.light} className= {styles.saveBtn} onClick={props.saveMealTime}>Save</Button>
                     </Col>
                 </Row>
             </div>
