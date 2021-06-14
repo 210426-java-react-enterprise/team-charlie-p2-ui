@@ -313,6 +313,8 @@ input[type=checkbox]:checked:after {
   height: 4rem;
   margin-bottom: 2rem;
   font-size: 1.5rem;
+  z-index: 1000;
+  overflow: hidden;
 }
 
 
@@ -324,6 +326,11 @@ input[type=checkbox]:checked:after {
 .not-expanded {
   height: 0;
 }
+/* 
+.hidden {
+  display: none;
+  height: 0;
+} */
 
 .spinny {
   animation-name: spin;
