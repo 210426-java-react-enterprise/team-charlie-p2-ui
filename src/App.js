@@ -7,7 +7,9 @@ import Search from "./components/Search";
 import SearchSelect from "./components/SearchSelect";
 import Favorites from "./components/Favorites"
 import Settings from "./components/Settings";
-import MealPlan from "./components/MealPlan";
+import Search from "./components/Search"
+import MealPlanNav from "./components/MealPlanNav";
+
 import { React, useState } from 'react';
 import AlertBox from "./components/AlertBox";
 import logo from './resources/logo.svg';
@@ -47,6 +49,7 @@ function App() {
     }
   }
 
+  console.log(currentUser);
 
   return (
     <div id="app">
@@ -62,7 +65,7 @@ function App() {
       {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
-      {screen === "plan" && <MealPlan viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}
+      {screen === "plan" && <MealPlanNav viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}
     </div>
   );
 }
