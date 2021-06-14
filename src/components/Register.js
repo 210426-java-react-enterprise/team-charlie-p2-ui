@@ -76,8 +76,7 @@ export default function Register(props) {
                 
 
                 //Should set homepage to dashboard 
-                props.setHomepage('home');
-                props.setMenuOptions(['Search', 'Favorites', 'Meal Plan', 'Settings'])
+                props.setLanding(false);
                 props.viewChange(e);
             }
             else{
@@ -92,7 +91,8 @@ export default function Register(props) {
                 
     return (
         <div id="register" className="screen">
-            <h2>Let's get you cooking!</h2>
+            <div className="card">
+            <h1>Welcome to <span>Pantry.io</span></h1>
             <FormField id="register-username" label="Username:" placeholder="johndoe" change={usernameChange} value={username} />
             <FormField id="register-password" label="Password:" placeholder="password" change={passwordChange} value={password} />
             <FormField id="register-email" label="Email:" placeholder="johndoe@website.com" change={emailChange} value={email} />
@@ -100,6 +100,7 @@ export default function Register(props) {
             {/* should change data-route to dashboard later */}
             <button type="button" data-route='home' className="form-field form-button" onClick={handleRegister}>Register</button>
             <a href="#" className="form-field" onClick={props.viewChange} data-route="login">Already have an account? Login here.</a>
+            </div>
         </div>
     )
 }

@@ -16,15 +16,14 @@ function App() {
 
   // useState("home") returns ["home", function for updating state]
   // needs state to hold favorite recipes (probably an array of objects) and meal plan (probably an object of objects)
-  const [screen, setScreen] = useState("home");
-  const [homepage, setHomepage] = useState("home");
+  const [screen, setScreen] = useState("settings");
+  const [landing, setLanding] = useState(false);
+  const [spin, setSpin] = useState("no-spin");
   const [menu, setMenu] = useState(false);
-  const [currentUsername, setCurrentUsername] = useState("");
-  const [menuOptions, setMenuOptions] = useState(["Login", "Register", "Search", "Favorite"]);
+  const [menuOptions, setMenuOptions] = useState(["Dashboard", "Search", "Favorites", "Meal Plan", "Settings"]);
   const [currentUser, setCurrentUser] = useState({});
   const [currentToken, setCurrentToken] = useState("");
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
-
 
   const viewChange = (e) => {
     const newScreen = e.target.getAttribute("data-route");
@@ -32,43 +31,35 @@ function App() {
   }
 
   const toggleMenu = () => {
+    const newClass = menu ? "unspinny" : "spinny";
+    setSpin(newClass);
     setMenu(!menu);
   }
 
-
-  const resetState = () => {
+  const reset = (e) => {
+    setLanding(true);
     setCurrentUser({});
     setCurrentToken("");
-  }
-
-  const logout = (e) =>{
-    viewChange(e);
-    resetState();
-  }
-
-
-  const reset = () => {
-    setScreen("home");
-    setHomepage("home");
-    setMenuOptions(["Login", "Register"]);
-    setCurrentUser({})
-    setCurrentToken("");
+    if (e != undefined) {
+      viewChange(e);
+    } else {
+      setScreen("register");
+    }
   }
 
 
   return (
     <div id="app">
-      {menu && <Menu menuOptions={menuOptions} viewChange={viewChange} />}
-      <nav id="nav-bar">
-        <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className="fas fa-bread-slice"></i></button>
-        <button type="button" id="home-button" className="icon-button" data-route={homepage} onClick={viewChange}><h1>Pantry.io</h1></button>
-      </nav>
-      {screen === "home" && <Home viewChange={viewChange} setCurrentUser={setCurrentUser} />}
+      <Menu menuOptions={menuOptions} viewChange={viewChange} menu={menu} />
+      {!landing && <nav id="nav-bar">
+        <button type="button" id="menu-button" className="icon-button" onClick={toggleMenu}><i className={`fas fa-bread-slice ${spin}`}></i></button>
+        <button type="button" id="home-button" className="icon-button" data-route="dashboard" onClick={viewChange}><h1>Pantry.io</h1></button>
+        <button type="button" id="logout-button" className="icon-button" data-route="login" onClick={reset}><h1>Logout</h1></button>
+      </nav>}
+      {screen === "login" && <Login setLanding={setLanding} viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} />}
+      {screen === "register" && <Register setLanding={setLanding} viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} />}
       {screen === "dashboard" && <Dashboard viewChange={viewChange} setMenuOptions={setMenuOptions} setCurrentUser={setCurrentUser} currentToken={currentToken} currentUser={currentUser} setQ={setQ} q={q} />}
-      {screen === "search-select" && <SearchSelect viewChange={viewChange} setCurrentUser={setCurrentUser} currentToken={currentToken} q={q} />}
       {screen === "favorites" && <Favorites viewChange={viewChange} setFavoriteRecipes={setFavoriteRecipes} setMenuOptions={setMenuOptions} setHomepage={setHomepage} favoriteRecipes={favoriteRecipes} currentToken={currentToken}/>}
-      {screen === "login" && <Login viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser}/>}
-      {screen === "register" && <Register viewChange={viewChange} setCurrentToken={setCurrentToken} setMenuOptions={setMenuOptions} setHomepage={setHomepage} setCurrentUser={setCurrentUser} />}
       {screen === "settings" && <Settings reset={reset} currentToken={currentToken}/>}
       {screen === "search" && <Search setCurrentUser={setCurrentUser} viewChange={viewChange} currentToken={currentToken}/>}
       {screen === "plan" && <MealPlan viewChange={viewChange} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}

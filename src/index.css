@@ -15,7 +15,10 @@
   */
 
 :root {
-  --primary: #402921;
+  --primary: #423e37;
+  --primary: #1c0f13;
+  --primary: #bb4f11;
+  --primary: #33261d;
   --highlight: #b25433;
   --secondary: #711e1d;
 }
@@ -42,7 +45,7 @@ body {
   min-height: 100vh;
   height: 100%;
   display: grid;
-  grid-template-rows: 5rem auto;
+  grid-template-rows: 4rem auto;
   grid-template-columns: auto 1fr;
   grid-template-areas: 
     "nav nav"
@@ -226,6 +229,10 @@ input[type=checkbox]:checked:after {
   margin-top: 1rem;
 }
 
+#logout-button {
+  margin-left: 30%;
+}
+
 .screen {
   width: 100%;
   height: 100%;
@@ -261,37 +268,185 @@ input[type=checkbox]:checked:after {
 }
 
 #menu {
-  width: 300px;
   background-color: var(--primary, black);
   height: 100%;
+  transition: width 1s;
+}
+
+.expanded {
+  width: 15rem;
+}
+
+.not-expanded {
+  width: 0;
+}
+
+.spinny {
+  animation-name: spin;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+}
+
+.unspinny {
+  animation-name: reverse-spin;
+  animation-direction: reverse;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes spin {
+  10% {
+    transform: rotate(36deg);
+  }
+
+  20% {
+    transform: rotate(72deg);
+  }
+
+  30% {
+    transform: rotate(108deg);
+  }
+
+  40% {
+    transform: rotate(144deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  60% {
+    transform: rotate(216deg);
+  }
+
+  70% {
+    transform: rotate(252deg);
+  }
+
+  80% {
+    transform: rotate(288deg);
+  }
+
+  90% {
+    transform: rotate(324deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+
+
+}
+
+@keyframes reverse-spin {
+  10% {
+    transform: rotate(36deg);
+  }
+
+  20% {
+    transform: rotate(72deg);
+  }
+
+  30% {
+    transform: rotate(108deg);
+  }
+
+  40% {
+    transform: rotate(144deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  60% {
+    transform: rotate(216deg);
+  }
+
+  70% {
+    transform: rotate(252deg);
+  }
+
+  80% {
+    transform: rotate(288deg);
+  }
+
+  90% {
+    transform: rotate(324deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+
+
 }
 
 #menu-items {
-  border-top: 1px solid white;
+  width: 15rem;
+  border-top: 2px solid white;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
 .menu-item {
+  font-family: 'Caveat', sans-serif;
+  font-size: 1.5rem;
+  border-bottom: 2px solid white;
   width: 100%;
   height: 5rem;
   color: white;
   cursor: pointer;
-  border-bottom: 1px solid white;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
 }
 
-#login > h2, #register > h2, #search-query > h2, #search-select >h2 {
+.menu-item > i {
+  margin-left: 1rem;
+}
+
+#login, #register {
+    grid-area: auto/auto/auto/auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v864-mind-foodillustrations-52a_1_2.jpg?w=1000&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=b8e8e4b3dfbe0b551c56894ba315b727) repeat center;
+    background-size: 400px auto;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    padding: 1rem;
+    width: 450px;
+    height: 450px;
+    background-color: rgba(247, 247, 247);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#login h1, #register h1 {
   font-family: 'Caveat', 'Raleway', cursive;
-  font-size: 5rem;
-  color: var(--secondary, red);
+  font-size: 3rem;
+  color: var(--primary, black);
   font-weight: 700;
-  margin: 0;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
+}
+
+#login h1 > span, #register h1 > span {
+  color: #cd322f;
+  font-weight: 700;
 }
 
 #search-select > h2{
@@ -317,9 +472,10 @@ input[type=checkbox]:checked:after {
 }
 
 .form-button {
-  border: 2px solid var(--primary, black);
+  border: 2px solid #cd322f;
   color: white;
-  background-color: var(--primary, black);
+  font-weight: bold;
+  background-color: #cd322f;
   font-family: inherit;
   font-size: 1rem;
   width: 15rem;
@@ -329,9 +485,17 @@ input[type=checkbox]:checked:after {
   margin-top: 2rem;
 }
 
-#login > a, #register > a {
+#login a, #register a {
   font-size: 1rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
+}
+
+#login a:visited {
+  color: #0000EE;
+}
+
+#register a:visited {
+  color: #0000EE;
 }
 
 .favorite-recipe-div .inner-favorite-recipe-div {
