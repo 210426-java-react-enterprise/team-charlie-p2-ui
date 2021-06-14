@@ -113,7 +113,7 @@ export default function MealPlanNav(props){
         console.log(JSON.stringify(jsonBody));
 
         let res = await fetch(`http://pantry-io-dev-env.eba-f3tnkmt7.us-east-1.elasticbeanstalk.com/meals/save/plan`, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': props.currentToken
