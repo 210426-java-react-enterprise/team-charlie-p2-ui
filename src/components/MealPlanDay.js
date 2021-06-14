@@ -46,9 +46,9 @@ export default function MealPlanDay(props){
                 <label className={styles.mealTimeLbl} htmlFor={recipeSelectId}>{mealTimeLbl}</label>
             </Col> 
             <Col>
-                <select className={styles.recipeSlct} name="recipe" id={recipeSelectId} ref={props.testRef}  onChange={props.handleOtionChange()}>
+                <select className={styles.recipeSlct} name="recipe" id={recipeSelectId} data-label={mealTimeLbl} ref={props.testRef}  onChange={props.handleOtionChange}>
                     <option value="">--Please choose and option</option>
-                    {props.currentUser.favorites.map((elem, index) =>  <option key ={index} value={elem.id}>{elem.label}</option>)}
+                    {props.currentUser.favorites.map((elem, index) =>  <option key={index} value={index}>{elem.label}</option>)}
                 </select>
             </Col> 
         </Row>
